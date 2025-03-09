@@ -75,8 +75,7 @@ const Navbar = () => {
 
     
         <a
-          href="https://vlabs.ac.in/"
-          target="_blank"
+           href="#virtuallabs"
           rel="noopener noreferrer"
           className="hidden md:inline-block bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-300"
         >

@@ -2,9 +2,9 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
-      <div className="w-full max-w-6xl bg-white shadow-lg rounded-lg p-8 md:p-12">
-        <nav className="text-sm text-gray-500 mb-6">
+    <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-white   pt-20">
+      <div className="w-[] shadow-lg rounded-lg p-8 md:p-12">
+        <nav className="text-sm  text-gray-500 mb-6">
           <span className="hover:text-blue-500 cursor-pointer">Home</span> » 
           <span className="text-blue-500"> About Us</span>
         </nav>
