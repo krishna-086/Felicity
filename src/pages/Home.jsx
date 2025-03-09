@@ -4,6 +4,8 @@ import ScrollingCarousel from "../components/colleges";
 import StatsSection from "../components/stats";
 import Footer from "../components/footer";
 import Announcements from "../components/annoncement";
+import Navbar from "../components/Navbar"
+
 
 import Tabs from "../components/tab";
 import VirtualLabs from "../components/VirtualLabs";
@@ -18,6 +20,7 @@ const Home = () => {
 
   return (
     <>
+      <Navbar />
       <div className="mt-27 flex justify-center m-5">
         <ImageCarousel
           images={images}
