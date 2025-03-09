@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FiMenu, FiX, FiSearch } from "react-icons/fi";
+import { FiMenu, FiSearch, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +15,6 @@ const Navbar = () => {
     { text: "Contact Us", link: "/contact-us" },
   ];
 
-  // Close search bar when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
@@ -29,17 +28,16 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 w-full bg-white shadow-md z-50 px-5">
+    <header className="fixed top-0 w-full bg-white shadow-md   z-50 px-5 animate-[slideIn_0.6s_ease-out]">
       <nav className="container mx-auto flex items-center justify-between px-2 py-4">
-
         <a href="./">
           <img
             src="https://centraloutreach.vlabs.co.in/images/logos/logo.png"
             alt="Logo"
-            className="h-14 "
+            className="h-14"
           />
         </a>
-        <ul className="hidden md:flex space-x-6 text-gray-700 font-medium">
+        <ul className="hidden lg:flex space-x-6 text-gray-700 font-medium">
           {navLinks.map((item, index) => (
             <li key={index} className="relative group">
               <a
@@ -54,7 +52,6 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-
         <div className="relative hidden md:flex items-center" ref={searchRef}>
           <input
             type="text"
@@ -72,53 +69,46 @@ const Navbar = () => {
             <FiSearch className="text-lg" />
           </button>
         </div>
-
-    
         <a
-           href="#virtuallabs"
+          href="#virtuallabs"
           rel="noopener noreferrer"
-          className="hidden md:inline-block bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-300"
+          className="hidden lg:inline-block bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-300"
         >
           Virtual Labs
         </a>
-
-
-        <button className="md:hidden text-2xl" onClick={() => setIsOpen(!isOpen)}>
+        <button className="lg:hidden text-2xl" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FiX /> : <FiMenu />}
         </button>
       </nav>
+      <div
+        className={`lg:hidden  transition-all duration-700 ease-out pb-8 ${
+          isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+        }`}
+      >
+        <ul className="flex flex-col items-center space-y-4 py-4 text-gray-700 font-medium">
+          {navLinks.map((item, index) => (
+            <li key={index} className="relative group">
+              <a
+                href={item.link}
+                target={item.link.startsWith("http") ? "_blank" : "_self"}
+                rel="noopener noreferrer"
+                className="relative text-gray-700 text-sm uppercase transition-colors duration-200"
+              >
+                {item.text}
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            </li>
+          ))}
+        </ul>
 
-      {isOpen && (
-        <div className="md:hidden bg-white shadow-md">
-          <ul className="flex flex-col items-center space-y-4 py-4 text-gray-700 font-medium">
-            {navLinks.map((item, index) => (
-              <li key={index} className="relative group">
-                <a
-                  href={item.link}
-                  target={item.link.startsWith("http") ? "_blank" : "_self"}
-                  rel="noopener noreferrer"
-                  className="relative text-gray-700 text-sm uppercase transition-colors duration-200"
-                >
-                  {item.text}
- 
-                  <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <div className="flex justify-center py-4">
-            <a
-              href="https://vlabs.ac.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-300"
-            >
-              Virtual Labs
-            </a>
-          </div>
-        </div>
-      )}
+        <a
+          href="#virtuallabs"
+          rel="noopener noreferrer"
+          className="bg-blue-600 text-white w-[70%] mx-auto px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-300 block text-center mt-4"
+        >
+          Virtual Labs
+        </a>
+      </div>
     </header>
   );
 };
