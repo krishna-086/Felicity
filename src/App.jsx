@@ -9,8 +9,8 @@ const App = () => {
   return (
     <Router>
       <div className="w-full min-h-screen">
-        
-        <Routes>
+
+       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact-us" element={<ContactPage />} />
           <Route path="/about-us" element={<AboutUs />} />

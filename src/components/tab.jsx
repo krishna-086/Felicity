@@ -8,8 +8,8 @@ const tabs = [
 const content = {
   objectives: (
     <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4">Objectives</h2>
-      <ul className="list-disc pl-5 space-y-2">
+      <h2 className="text-2xl font-semibold mb-8 text-center">Objectives</h2>
+      <ul className="list-disc pl-5 space-y-5">
         <li>To provide remote-access to simulation-based Labs in various disciplines of Science and Engineering.</li>
         <li>To enthuse students to conduct experiments by arousing their curiosity. This helps in learning concepts through remote experimentation.</li>
         <li>To provide a complete Learning Management System with additional tools such as web resources, video lectures, and self-evaluation.</li>
@@ -18,7 +18,7 @@ const content = {
   ),
   philosophy: (
     <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4">The Philosophy</h2>
+      <h2 className="text-2xl font-semibold mb-8 text-center">The Philosophy</h2>
       <p className="mb-4">
         Good lab facilities and updated experiments are crucial for engineering colleges, but lack of resources often creates challenges. The Virtual Labs project aims to solve this by providing remote-access to simulation-based labs.
       </p>
@@ -36,7 +36,7 @@ export default function Tabs() {
   const [activeTab, setActiveTab] = useState("objectives");
 
   return (
-    <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-lg w-full">
+    <div className="max-w-[80%] mx-auto  rounded-lg w-full">
       {/* Tabs */}
       <div className="flex border-b border-gray-300">
         {tabs.map((tab) => (
@@ -54,7 +54,7 @@ export default function Tabs() {
         ))}
       </div>
 
-      <div className="text-gray-800">{content[activeTab]}</div>
+      <div className="text-gray-800 ">{content[activeTab]}</div>
     </div>
   );
 }
