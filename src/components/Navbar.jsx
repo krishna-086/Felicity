@@ -29,14 +29,14 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 max-w-full bg-white shadow-md z-50 px-5">
+    <header className="fixed top-0 w-full bg-white shadow-md z-50 px-5">
       <nav className="container mx-auto flex items-center justify-between px-2 py-4">
 
         <a href="./">
           <img
             src="https://centraloutreach.vlabs.co.in/images/logos/logo.png"
             alt="Logo"
-            className="h-12 sm:h-14"
+            className="h-14 "
           />
         </a>
         <ul className="hidden md:flex space-x-6 text-gray-700 font-medium">
