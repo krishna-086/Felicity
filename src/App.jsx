@@ -8,6 +8,7 @@ import SortingSidebar from "./components/SortingSidebar";
 import ContactPage from "./pages/Contact";
 import AboutUs from "./pages/About";
 import Course from "./pages/Course";
+import Chatbot from "./components/Chatbot";
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/bubble-sort/practice" element={<BubbleSortPractice />} />
           <Route path="/bubble-sort/exercise" element={<BubbleSortExercise />} />
         </Routes>
+        <Chatbot />
       </div>
     </Router>
   );
