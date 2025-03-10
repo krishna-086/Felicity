@@ -11,6 +11,7 @@ import AboutUs from "./pages/About";
 import Course from "./pages/Course";
 import Chatbot from "./components/Chatbot";
 import Bubble from "./pages/BubbleSort";
+import LabPage from "./pages/LabPages";
 
 
 const App = () => {
@@ -28,7 +29,7 @@ const App = () => {
           <Route path="/bubble-sort/demo" element={<BubbleSortVisualizer />} />
           <Route path="/bubble-sort/practice" element={<BubbleSortPractice />} />
           <Route path="/bubble-sort/exercise" element={<BubbleSortExercise />} />
-          <Route path="/labs/:category" element={<LabPages />} />
+          <Route path="/labs/:category" element={<LabPage />} />
 
         </Routes>
         <Chatbot />

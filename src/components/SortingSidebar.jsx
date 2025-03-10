@@ -65,7 +65,7 @@ const SortingSidebar = () => {
                     {["Aim", "Objective", "Demo", "Practice", "Exercise"].map((section) => (
                       <button
                         key={section}
-                        className="block w-full text-left p-2 flex items-center gap-2 hover:bg-gray-700 rounded transition-all text-sm text-white"
+                        className="block w-full text-left p-2  items-center gap-2 hover:bg-gray-700 rounded transition-all text-sm text-white"
                         onClick={() =>
                           navigate(`/${sortType.toLowerCase().replace(" ", "-")}/${section.toLowerCase()}`)
                         }
