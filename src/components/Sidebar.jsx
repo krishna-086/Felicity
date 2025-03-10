@@ -21,7 +21,7 @@ const childItemClass = (itemValue, selected) =>
 
 const Sidebar = ({ setSelected, selected }) => {
   return (
-    <div className="w-1/3 bg-white shadow-lg rounded-xl p-4 h-full overflow-y-auto">
+    <div className="w-1/3 bg-white shadow-lg rounded-xl p-4 h-full overflow-y-auto hidden md:block">
       <ul className="space-y-1">
         {/* General Section */}
           <li className={headingItemClass("Aim", selected)} onClick={() => setSelected("Aim")}>Aim</li>
