@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Footer from "../components/footer";
+import StarRatingDisplay from "../components/starDisplay";
 
 const Course = () => {
   const [selected, setSelected] = useState("Introduction");
@@ -7,15 +8,15 @@ const Course = () => {
   return (
     <>
       {/* Custom Navbar */}
-      <nav className="bg-white text-black py-4 shadow-lg fixed top-0 w-full z-50 border-b-4 border-orange-500">
+      <nav className="bg-white text-gray-700 py-4 shadow-lg fixed top-0 w-full z-50 border-b-4 border-orange-500">
         <div className="max-w-9xl mx-auto px-10 flex justify-between items-center">
-          <img src="/logo.jpg" alt="Logo" className="h-12" />
-          <ul className="flex items-center space-x-6 text-lg">
-            <li className="text-yellow-500">⭐⭐⭐⭐✰</li>
-            <li className="cursor-pointer hover:text-[#085d90]">Home</li>
-            <li className="cursor-pointer hover:text-[#085d90]">About Us</li>
-            <li className="cursor-pointer hover:text-[#085d90]">Contact Us</li>
-          </ul>
+            <img src="/logo.jpg" alt="Logo" className="h-12" />
+            <ul className="flex items-center space-x-6 text-md uppercase font-medium">
+                <li><StarRatingDisplay rating={4.5} /></li>
+                <li className="cursor-pointer hover:text-[#085d90]">Home</li>
+                <li className="cursor-pointer hover:text-[#085d90]">About Us</li>
+                <li className="cursor-pointer hover:text-[#085d90]">Contact Us</li>
+            </ul>
         </div>
       </nav>
 

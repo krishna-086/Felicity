@@ -72,10 +72,11 @@ const Navbar = () => {
         <a
           href="#virtuallabs"
           rel="noopener noreferrer"
-          className="hidden lg:inline-block bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-300"
-        >
+          className="hidden lg:inline-block bg-[#085d90] text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:bg-[#064a73] hover:scale-105 hover:shadow-lg"
+          >
           Virtual Labs
         </a>
+
         <button className="lg:hidden text-2xl" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FiX /> : <FiMenu />}
         </button>
@@ -104,7 +105,7 @@ const Navbar = () => {
         <a
           href="#virtuallabs"
           rel="noopener noreferrer"
-          className="bg-blue-600 text-white w-[70%] mx-auto px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition duration-300 block text-center mt-4"
+          className="bg-[#085d90] text-white w-[70%] mx-auto px-4 py-2 rounded-md text-sm font-medium hover:bg-[#064a73] transition duration-300 block text-center mt-4"
         >
           Virtual Labs
         </a>
