@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import Footer from "../components/footer";
+import { Menu, Home, BookOpen, List, MoreHorizontal, Users, AlignJustify, MessageSquare } from "lucide-react";
 
 const Course = () => {
   const [selected, setSelected] = useState("Introduction");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
 
   return (
     <>
@@ -10,13 +13,30 @@ const Course = () => {
       <nav className="bg-white text-black py-4 shadow-lg fixed top-0 w-full z-50 border-b-4 border-orange-500">
         <div className="max-w-9xl mx-auto px-10 flex justify-between items-center">
           <img src="/logo.jpg" alt="Logo" className="h-12" />
-          <ul className="flex items-center space-x-6 text-lg">
+          {/* Desktop Menu */}
+          <ul className="hidden md:flex items-center space-x-6 text-lg">
             <li className="text-yellow-500">⭐⭐⭐⭐✰</li>
             <li className="cursor-pointer hover:text-[#085d90]">Home</li>
             <li className="cursor-pointer hover:text-[#085d90]">About Us</li>
             <li className="cursor-pointer hover:text-[#085d90]">Contact Us</li>
           </ul>
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button onClick={() => setMenuOpen(!menuOpen)}>
+              <Menu size={30} className="text-black" />
+            </button>
+          </div>
         </div>
+        {/* Mobile Menu Dropdown */}
+        {menuOpen && (
+          <div className="md:hidden absolute top-16 right-0 bg-white shadow-lg w-48 rounded-lg p-4">
+            <ul className="space-y-4 text-lg">
+              <li className="cursor-pointer hover:text-[#085d90]">Home</li>
+              <li className="cursor-pointer hover:text-[#085d90]">About Us</li>
+              <li className="cursor-pointer hover:text-[#085d90]">Contact Us</li>
+            </ul>
+          </div>
+        )}
       </nav>
 
       <div className="min-h-screen bg-gray-100 p-8 flex flex-col mt-20">
@@ -24,8 +44,8 @@ const Course = () => {
           Computer Science and Engineering
         </h1>
         <div className="w-full max-w-7xl flex gap-8">
-          {/* Sidebar */}
-          <div className="w-1/5 bg-white shadow-lg rounded-xl p-6">
+          {/* Sidebar (Hidden in Mobile) */}
+          <div className="w-1/5 bg-white shadow-lg rounded-xl p-6 hidden md:block">
             <ul className="space-y-4">
               {["Introduction", "Objective", "List of experiments", "Target Audience", "Course Alignment", "Feedback"].map((item, index) => (
                 <li
@@ -39,8 +59,8 @@ const Course = () => {
             </ul>
           </div>
 
-          {/* Main Content */}
-          <div className="w-7/8 p-8 bg-white shadow-lg rounded-xl">
+                    {/* Main Content */}
+                    <div className="w-7/8 p-8 bg-white shadow-lg rounded-xl">
             <h2 className="text-3xl font-semibold text-gray-800 mb-6">Data Structures - 1</h2>
             {selected === "Objective" && (
               <p className="text-gray-700 leading-relaxed text-lg">
@@ -152,6 +172,24 @@ const Course = () => {
           </div>
         </div>
       </div>
+      
+      {/* Bottom Navbar for Mobile */}
+      <div className="fixed bottom-0 w-full bg-white shadow-lg border-t-4 border-orange-500 p-4 flex justify-around md:hidden">
+        <button onClick={() => setSelected("Introduction")} className={selected === "Introduction" ? "text-[#085d90]" : "text-gray-700"}><Home size={24} /></button>
+        <button onClick={() => setSelected("Objective")} className={selected === "Objective" ? "text-[#085d90]" : "text-gray-700"}><BookOpen size={24} /></button>
+        <button onClick={() => setSelected("List of experiments")} className={selected === "List of experiments" ? "text-[#085d90]" : "text-gray-700"}><List size={24} /></button>
+        <button onClick={() => setMoreOpen(!moreOpen)} className="text-gray-700"><MoreHorizontal size={24} /></button>
+      </div>
+      
+      {/* More Options */}
+      {moreOpen && (
+        <div className="fixed bottom-16 left-0 right-0 bg-white shadow-lg border-t border-gray-300 p-4 flex flex-col space-y-4 md:hidden">
+          <button onClick={() => { setSelected("Target Audience"); setMoreOpen(false); }} className="text-gray-700 flex items-center gap-2"><Users size={20} /> Target Audience</button>
+          <button onClick={() => { setSelected("Course Alignment"); setMoreOpen(false); }} className="text-gray-700 flex items-center gap-2"><AlignJustify size={20} /> Course Alignment</button>
+          <button onClick={() => { setSelected("Feedback"); setMoreOpen(false); }} className="text-gray-700 flex items-center gap-2"><MessageSquare size={20} /> Feedback</button>
+        </div>
+      )}
+
       <Footer />
     </>
   );
