@@ -4,9 +4,12 @@ import ScrollingCarousel from "../components/colleges";
 import StatsSection from "../components/stats";
 import Footer from "../components/footer";
 import Announcements from "../components/annoncement";
-import ImageCarousel from "../components/imageCarasouel";
-import Virtuallabs from "../components/virtualLabs";
+import Navbar from "../components/Navbar"
+
+
 import Tabs from "../components/tab";
+import VirtualLabs from "../components/VirtualLabs";
+import ImageCarousel from "../components/ImageCarasouel";
 
 const Home = () => {
   const images = [
@@ -17,6 +20,7 @@ const Home = () => {
 
   return (
     <>
+      <Navbar />
       <div className="mt-27 flex justify-center m-5">
         <ImageCarousel
           images={images}
@@ -26,7 +30,9 @@ const Home = () => {
         />
       </div>
       <Tabs />
-      <Virtuallabs />
+      <div id="virtuallabs" className="pt-20">
+        <VirtualLabs />
+      </div>
 
       {/* Video & Announcements Section */}
       <div className="flex flex-col md:flex-row justify-between p-8 gap-6">
