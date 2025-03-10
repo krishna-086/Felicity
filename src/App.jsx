@@ -9,6 +9,7 @@ import SortingSidebar from "./components/SortingSidebar";
 import ContactPage from "./pages/Contact";
 import AboutUs from "./pages/About";
 import Course from "./pages/Course";
+import Chatbot from "./components/Chatbot";
 import Bubble from "./pages/BubbleSort";
 
 
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/labs/:category" element={<LabPages />} />
 
         </Routes>
+        <Chatbot />
       </div>
     </Router>
   );
