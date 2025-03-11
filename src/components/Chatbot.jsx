@@ -5,12 +5,12 @@ const faqData = [
   { 
     question: "What is Virtual Labs?", 
     answer: "Virtual Labs project is an initiative of Ministry of Education (MoE), Government of India under the aegis of National Mission on Education through Information and Communication Technology (NMEICT). This project is a consortium activity of twelve participating institutes, with IIT Delhi as the coordinating institute. It represents a paradigm shift in ICT-based education and introduces remote-experimentation for the first time.Under the Virtual Labs project, over 100 Virtual Labs consisting of approximately 700+ web-enabled experiments were designed for remote-operation and viewing.",
-    keywords: ["tell me about virtual labs", "what is vlab ", "virtual labs", "open"]
+    keywords: ["tell me about virtual labs", "what is vlab ", "what is virtual lab", ]
   },
   { 
     question: "How can I access the Virtual Labs?", 
     answer: "You can access Virtual Labs through https://www.vlab.co.in/ with a PC or smartphone and internet.",
-    keywords: ["access", "how", "visit", "open","how can i use virtual lab","labs","vlabs"]
+    keywords: ["access", "how", "visit", "open","how can i use virtual lab","labs","vlabs", "virtual labs","virtual lab"]
   },
   
     { 
