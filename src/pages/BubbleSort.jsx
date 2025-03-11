@@ -300,16 +300,18 @@ const Bubble = () => {
         >
           <Home size={24} />
         </button>
-        <button
-          onClick={() => setSelected("Bubble Sort - Demo")}
-          className={
-            selected === "Bubble Sort - Demo"
-              ? "text-[#085d90]"
-              : "text-gray-700"
-          }
-        >
-          <BookOpen size={24} />
-        </button>
+        <Link to="./demo">
+  <button
+    onClick={() => setSelected("Bubble Sort - Demo")}
+    className={
+      selected === "Bubble Sort - Demo"
+        ? "text-[#085d90]"
+        : "text-gray-700"
+    }
+  >
+    <BookOpen size={24} />
+  </button>
+</Link>
         <button
           onClick={() => setSelected("Bubble Sort - Quiz")}
           className={
