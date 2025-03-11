@@ -3,66 +3,14 @@ export const LabCategories = [
     name: "Computer Science & Engineering",
     labs: [
       {
-        name: "Artificial Intelligence & Machine Learning",
+        name: "Programming and Data Structures",
         labs: [
-          {
-            title: "Introduction to Artificial Intelligence Lab",
-            institution: "IIIT Hyderabad",
-            referenceBooks: [],
-            syllabusMapping: [],
-          },
-          {
-            title: "Advanced Artificial Intelligence Lab",
-            institution: "IIIT Hyderabad",
-            referenceBooks: [],
-            syllabusMapping: [],
-          },
-          {
-            title: "Artificial Neural Networks Lab",
-            institution: "IIIT Hyderabad",
-            referenceBooks: [
-              "Geotechnical Engineering by Tata Mc-Graw Hill",
-            ],
-            syllabusMapping: [],
-          },
-          {
-            title: "Computational Linguistics Lab",
-            institution: "IIIT Hyderabad",
-            referenceBooks: [],
-            syllabusMapping: [],
-          },
-          {
-            title: "Natural Language Processing Lab",
-            institution: "IIIT Hyderabad",
-            referenceBooks: [],
-            syllabusMapping: [],
-          },
-        ],
-      },
-      {
-        name: "Computer Science & Engineering",
-        labs: [
-          {
-            title: "Computer Organization & Architecture Lab",
-            institution: "IIT Kharagpur",
-            referenceBooks: [
-              "Computer Organization and Design, 2nd Ed., by David A. Patterson and John L. Hennessy, Morgan 1997",
-              "Computer System Architecture by M. Mano, 2001, Prentice-Hall.",
-              "Computer Architecture- Nicholas Carter, 2002, T.M.H.",
-            ],
-            syllabusMapping: ["KUK, MDU, RTU, UPTU, IPU (UG)"],
-          },
           {
             title: "Computer Programming Lab",
             institution: "IIIT Hyderabad",
             referenceBooks: [],
             syllabusMapping: [],
           },
-        ],
-      },
-      {
-        name: "Algorithms & Data Structures",
-        labs: [
           {
             title: "Data Structures - I",
             institution: "IIIT Hyderabad",
@@ -87,33 +35,6 @@ export const LabCategories = [
             referenceBooks: [],
             syllabusMapping: [],
           },
-        ],
-      },
-      {
-        name: "Software Engineering & Systems",
-        labs: [
-          {
-            title: "Software Engineering Lab",
-            institution: "IIT Kharagpur",
-            referenceBooks: [],
-            syllabusMapping: [],
-          },
-        ],
-      },
-      {
-        name: "Cybersecurity & Cryptography",
-        labs: [
-          {
-            title: "Cryptography Lab",
-            institution: "IIIT Hyderabad",
-            referenceBooks: [],
-            syllabusMapping: [],
-          },
-        ],
-      },
-      {
-        name: "Software Development & Scripting",
-        labs: [
           {
             title: "Python Programming Lab",
             institution: "IIT Kanpur",
@@ -121,7 +42,7 @@ export const LabCategories = [
             syllabusMapping: [],
           },
           {
-            title: "Advanced Python Programming Lab",
+            title: "Python Programming Lab - Advanced Topics (New)",
             institution: "IIIT Hyderabad",
             referenceBooks: [],
             syllabusMapping: [],
@@ -129,7 +50,81 @@ export const LabCategories = [
         ],
       },
       {
-        name: "Embedded Systems & Signal Processing",
+        name: "Computer Architecture and Organization",
+        labs: [
+          {
+            title: "Computer Organisation and Architecture Lab",
+            institution: "IIT Kharagpur",
+            referenceBooks: [
+              "Computer Organization and Design, 2nd Ed., by David A. Patterson and John L. Hennessy, Morgan 1997",
+              "Computer System Architecture by M. Mano, 2001, Prentice-Hall.",
+              "Computer Architecture- Nicholas Carter, 2002, T.M.H.",
+            ],
+            syllabusMapping: ["KUK, MDU, RTU, UPTU, IPU (UG)"],
+          },
+          {
+            title: "Computer Organization Lab",
+            institution: "IIIT Hyderabad",
+            referenceBooks: [],
+            syllabusMapping: [],
+          },
+        ],
+      },
+      {
+        name: "Artificial Intelligence and Machine Learning (AI & ML)",
+        labs: [
+          {
+            title: "Artificial Intelligence I Lab (New)",
+            institution: "IIIT Hyderabad",
+            referenceBooks: [],
+            syllabusMapping: [],
+          },
+          {
+            title: "Artificial Intelligence II Lab (New)",
+            institution: "IIIT Hyderabad",
+            referenceBooks: [],
+            syllabusMapping: [],
+          },
+          {
+            title: "Artificial Neural Networks Lab",
+            institution: "IIIT Hyderabad",
+            referenceBooks: ["Geotechnical Engineering by Tata Mc-Graw Hill"],
+            syllabusMapping: [],
+          },
+          {
+            title: "Soft Computing Tools in Engineering Lab",
+            institution: "IIT Kharagpur",
+            referenceBooks: [],
+            syllabusMapping: [],
+          },
+          // Note: "Natural Language Processing Lab" is categorized below.
+        ],
+      },
+      {
+        name: "Language and Speech Processing",
+        labs: [
+          {
+            title: "Computational Linguistics Lab",
+            institution: "IIIT Hyderabad",
+            referenceBooks: [],
+            syllabusMapping: [],
+          },
+          {
+            title: "Natural Language Processing Lab",
+            institution: "IIIT Hyderabad",
+            referenceBooks: [],
+            syllabusMapping: [],
+          },
+          {
+            title: "Speech Signal Processing Lab",
+            institution: "IIIT Hyderabad",
+            referenceBooks: [],
+            syllabusMapping: [],
+          },
+        ],
+      },
+      {
+        name: "Digital Media and Signal Processing",
         labs: [
           {
             title: "Image Processing Lab",
@@ -143,20 +138,31 @@ export const LabCategories = [
             referenceBooks: [],
             syllabusMapping: [],
           },
+        ],
+      },
+      {
+        name: "Software Engineering and Design",
+        labs: [
           {
-            title: "Soft Computing Tools in Engineering Lab",
+            title: "Software Engineering Lab",
             institution: "IIT Kharagpur",
+            referenceBooks: [],
+            syllabusMapping: [],
+          },
+          {
+            title: "Creative Design, Prototyping & Experiential Lab",
+            institution: "IIT Guwahati",
             referenceBooks: [],
             syllabusMapping: [],
           },
         ],
       },
       {
-        name: "Design & Prototyping",
+        name: "Security and Cryptography",
         labs: [
           {
-            title: "Creative Design, Prototyping & Experiential Lab",
-            institution: "IIT Guwahati",
+            title: "Cryptography Lab",
+            institution: "IIIT Hyderabad",
             referenceBooks: [],
             syllabusMapping: [],
           },
@@ -166,7 +172,7 @@ export const LabCategories = [
   },
   {
     name: "Electrical & Communication Engineering",
-    labs:[],
+    labs: [],
   },
   {
     name: "Electrical Engineering",
@@ -213,6 +219,7 @@ export const announcements = [
     link: "https://drive.google.com/file/d/1FGJ21hQmJ40gtPh264ZS6QDtT11hSTTv/view?usp=sharing",
   },
 ];
+
 export const testimonials = [
   {
     quote:
@@ -245,6 +252,7 @@ export const testimonials = [
     designation: "Delhi University",
   },
 ];
+
 export const labs = [
   {
     title: "Computer Science & Engineering",

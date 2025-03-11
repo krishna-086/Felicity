@@ -43,9 +43,9 @@ const QuizApp = () => {
   const checkAnswer = (q, correctAnswer, option) => {
     if (submitted && answers[q]) {
       if (answers[q] === option && option === correctAnswer) {
-        return "bg-green-500 text-white"; // Correct answer
+        return "bg-green-400 text-white"; // Correct answer
       } else if (answers[q] === option && option !== correctAnswer) {
-        return "bg-red-500 text-white"; // Wrong answer
+        return "bg-red-400 text-white"; // Wrong answer
       }
     }
     return ""; // Default styling for unanswered/other options
@@ -53,7 +53,7 @@ const QuizApp = () => {
 
   return (
     <div className="quiz-app  mt-2 md:p-6 w-full max-w-4xl mx-auto ">
-    <div className="px-2">
+    <div className="px-5">
       <h2 className="text-l md:text-2xl font-bold mb-2 md:mb-4 ">
         Choose Difficulty:
       </h2>
@@ -170,7 +170,7 @@ const QuizApp = () => {
         )}
 
         {difficulty.beginner && (
-          <div className="question p-4 border rounded-lg bg-green-50">
+          <div className="question p-4 border rounded-lg bg-blue-50">
             <p className="font-semibold mb-2">
               2. To sort an array in descending order, when will we swap two
               adjacent elements under consideration?
@@ -247,7 +247,7 @@ const QuizApp = () => {
         )}
 
         {difficulty.advanced && (
-          <div className="question p-4 border rounded-lg bg-red-50">
+          <div className="question p-4 border rounded-lg bg-blue-50">
             <p className="font-semibold mb-2">
               3. Consider the following array: A = [9, -1, -10, 9*, 2]
             </p>
