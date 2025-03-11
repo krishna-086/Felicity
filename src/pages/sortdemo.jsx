@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
 import SpeedSlider from "../components/slider";
+import { Link } from "react-router-dom";
 
 const BubbleSortVisualizer = () => {
   const [array, setArray] = useState([29, 47, 17, 68, 49]);
@@ -57,7 +58,37 @@ const BubbleSortVisualizer = () => {
   };
 
   return (
-    <div className="min-h-screen  flex flex-col items-center p-4 md:p-6">
+    <div className="min-h-screen bg-gray-100">
+      {/* Navbar */}
+      <nav className="bg-white text-gray-700 py-2 shadow-lg fixed top-0 w-full z-50 border-b-4 border-orange-500">
+        <div className="max-w-7xl mx-auto px-5 md:px-10 flex justify-between items-center">
+        <Link
+                to="/exp/bubble-sort"><img src="/logo.jpg" alt="Logo" className="h-12" /></Link>
+          <ul className="hidden md:flex items-center space-x-6 text-md uppercase font-medium">
+            <li className="cursor-pointer hover:text-[#085d90]">Home</li>
+            <li className="cursor-pointer hover:text-[#085d90]">Rate Me</li>
+            <li className="cursor-pointer hover:text-[#085d90]">Report a Bug</li>
+            <li>
+              <Link
+                to="./practice"
+                className="border-2 border-[#085d90] text-[#085d90] px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-[#085d90] hover:text-white shadow-lg transform hover:scale-105 animate-pulse"
+              >
+                Practice
+              </Link>
+            </li>
+          </ul>
+          {/* Mobile Button */}
+          <div className="md:hidden ml-auto">
+            <Link
+              to="./practice"
+              className="border-2 border-[#085d90] text-[#085d90] px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-[#085d90] hover:text-white shadow-lg transform hover:scale-105 animate-pulse"
+            >
+              Practice
+            </Link>
+          </div>
+        </div>
+      </nav>
+    <div className="min-h-screen  flex flex-col items-center mt-15 p-4 md:p-6">
       
       
       <div className="bg-white shadow-lg rounded-xl p-6 md:p-8 w-full max-w-3xl text-center">
@@ -128,6 +159,7 @@ const BubbleSortVisualizer = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

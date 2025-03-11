@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaUndo, FaRedo, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const BubbleSortPractice = () => {
   const initialArray = [29, 47, 17, 68, 49]; // Typical array from Virtual Labs
@@ -104,7 +105,37 @@ const BubbleSortPractice = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4 sm:p-6">
+    <div className="min-h-screen bg-gray-100">
+      {/* Navbar */}
+      <nav className="bg-white text-gray-700 py-2 shadow-lg fixed top-0 w-full z-50 border-b-4 border-orange-500">
+        <div className="max-w-7xl mx-auto px-5 md:px-10 flex justify-between items-center">
+        <Link
+                to="/exp/bubble-sort"><img src="/logo.jpg" alt="Logo" className="h-12" /></Link>
+          <ul className="hidden md:flex items-center space-x-6 text-md uppercase font-medium">
+            <li className="cursor-pointer hover:text-[#085d90]">Home</li>
+            <li className="cursor-pointer hover:text-[#085d90]">Rate Me</li>
+            <li className="cursor-pointer hover:text-[#085d90]">Report a Bug</li>
+            <li>
+              <Link
+                to="./practice"
+                className="border-2 border-[#085d90] text-[#085d90] px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-[#085d90] hover:text-white shadow-lg transform hover:scale-105 animate-pulse"
+              >
+                Practice
+              </Link>
+            </li>
+          </ul>
+          {/* Mobile Button */}
+          <div className="md:hidden ml-auto">
+            <Link
+              to="./practice"
+              className="border-2 border-[#085d90] text-[#085d90] px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-[#085d90] hover:text-white shadow-lg transform hover:scale-105 animate-pulse"
+            >
+              Practice
+            </Link>
+          </div>
+        </div>
+      </nav>
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center mt-15 p-4 sm:p-6">
       <div className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 w-full max-w-4xl text-center">
         <h1 className="text-2xl sm:text-3xl font-bold text-blue-800 mb-6">
           Bubble Sort Practice
@@ -216,6 +247,7 @@ const BubbleSortPractice = () => {
           </motion.div>
         )}
       </div>
+    </div>
     </div>
   );
 };
