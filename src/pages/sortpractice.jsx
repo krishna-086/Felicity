@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaUndo, FaRedo, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import AccordionItem from "../components/Accordion";
+import { BookOpen, Home, List, MoreHorizontal } from "lucide-react";
 
 const BubbleSortPractice = () => {
   const initialArray = [29, 47, 17, 68, 49]; // Typical array from Virtual Labs
@@ -248,6 +250,142 @@ const BubbleSortPractice = () => {
         )}
       </div>
     </div>
+    <div className="fixed bottom-0 w-full bg-white shadow-lg border-t-4 border-orange-500 p-4 flex justify-around md:hidden">
+        <button
+          onClick={() => setSelected("Aim")}
+          className={selected === "Aim" ? "text-[#085d90]" : "text-gray-700"}
+        >
+          <Home size={24} />
+        </button>
+        <Link to="./demo">
+  <button
+    onClick={() => setSelected("Bubble Sort - Demo")}
+    className={
+      selected === "Bubble Sort - Demo"
+        ? "text-[#085d90]"
+        : "text-gray-700"
+    }
+  >
+    <BookOpen size={24} />
+  </button>
+</Link>
+        <button
+          onClick={() => setSelected("Bubble Sort - Quiz")}
+          className={
+            selected === "Bubble Sort - Quiz"
+              ? "text-[#085d90]"
+              : "text-gray-700"
+          }
+        >
+          <List size={24} />
+        </button>
+        <button
+          onClick={() => setMoreOpen(!moreOpen)}
+          className="text-gray-700"
+        >
+          <MoreHorizontal size={24} />
+        </button>
+      </div>
+      {/* More Options */}
+      {moreOpen && (
+        <div className="fixed bottom-16 left-0 right-0 bg-white shadow-lg border-t border-gray-300 p-4 md:hidden">
+          <div className="w-full max-h-[70vh] overflow-y-auto">
+            <ul className="space-y-2">
+              {/* General Section */}
+              <li
+                className={headingItemClass("Aim", selected)}
+                onClick={() => {
+                  setSelected("Aim");
+                  setMoreOpen(false);
+                }}
+              >
+                Aim
+              </li>
+              <li
+                className={headingItemClass("Overview", selected)}
+                onClick={() => {
+                  setSelected("Overview");
+                  setMoreOpen(false);
+                }}
+              >
+                Overview
+              </li>
+
+              {/* Bubble Sort Accordion */}
+              <AccordionItem title="Bubble Sort">
+  {[
+    { text: "Aim" },
+    { text: "Concept" },
+    { text: "Algorithm" },
+    { text: "Demo", link: "./demo" },
+    { text: "Practice", link: "./practice" },
+    { text: "Exercise", link: "./exercise" },
+    { text: "Quiz" },
+  ].map(({ text, link }) => (
+    <li
+      key={text}
+      className={childItemClass(`Bubble Sort - ${text}`, selected)}
+      onClick={() => {
+        setSelected(`Bubble Sort - ${text}`);
+        setMoreOpen(false);
+      }}
+    >
+      {link ? (
+        <Link to={link} className="w-full h-full block">
+          {text}
+        </Link>
+      ) : (
+        text
+      )}
+    </li>
+  ))}
+</AccordionItem>
+
+              {/* Optimized Bubble Sort Accordion */}
+              <AccordionItem title="Optimized Bubble Sort">
+                {[
+                  "Optimized Bubble Sort - Aim",
+                  "Optimized Bubble Sort - Optimization Technique",
+                  "Optimized Bubble Sort - Demo",
+                  "Optimized Bubble Sort - Practice",
+                  "Optimized Bubble Sort - Exercise",
+                  "Optimized Bubble Sort - Quiz",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className={childItemClass(item, selected)}
+                    onClick={() => {
+                      setSelected(item);
+                      setMoreOpen(false);
+                    }}
+                  >
+                    {item.split("- ")[1]}
+                  </li>
+                ))}
+              </AccordionItem>
+
+              {/* Other Items */}
+              {[
+                "Code Assessment",
+                "Posttest",
+                "Further Readings/References",
+                "Feedback",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className={headingItemClass(item, selected)}
+                  onClick={() => {
+                    setSelected(item);
+                    setMoreOpen(false);
+                  }}
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

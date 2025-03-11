@@ -28,15 +28,27 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 w-full bg-white shadow-md   z-50 px-5 animate-[slideIn_0.6s_ease-out]">
+    <header className="fixed top-0 w-full bg-white shadow-md z-50 px-5 animate-[slideIn_0.6s_ease-out]">
       <nav className="container mx-auto flex items-center justify-between px-2 py-4">
-        <a href="./">
-          <img
-            src="https://centraloutreach.vlabs.co.in/images/logos/logo.png"
-            alt="Logo"
-            className="h-14"
-          />
-        </a>
+        {/* Logo & Title */}
+        <div className="flex items-center space-x-3">
+          <a href="/">
+            <img src="/logo.jpg" alt="Logo" className="h-10 sm:h-14" />
+          </a>
+          <div className="hidden sm:block text-xs sm:text-sm md:text-base">
+            <div className="font-semibold">An Initiative of</div>
+            <div className="font-semibold">
+              Ministry of Education
+              <br />
+              <span className="font-normal">
+                Under the National Mission on Education through{" "}
+                <span className="text-red-500">ICT</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation Links (Desktop) */}
         <ul className="hidden lg:flex space-x-6 text-gray-700 font-medium">
           {navLinks.map((item, index) => (
             <li key={index} className="relative group">
@@ -47,11 +59,13 @@ const Navbar = () => {
                 className="relative text-gray-700 text-md uppercase transition-colors duration-200"
               >
                 {item.text}
-                <span className="absolute left-0 -bottom-[35px] w-0 h-[3px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute left-0 -bottom-[5px] w-0 h-[3px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
               </a>
             </li>
           ))}
         </ul>
+
+        {/* Search (Hidden on Mobile) */}
         <div className="relative hidden md:flex items-center" ref={searchRef}>
           <input
             type="text"
@@ -69,24 +83,29 @@ const Navbar = () => {
             <FiSearch className="text-lg" />
           </button>
         </div>
+
+        {/* Virtual Labs Button (Desktop) */}
         <a
           href="#virtuallabs"
           rel="noopener noreferrer"
           className="hidden lg:inline-block bg-[#085d90] text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:bg-[#064a73] hover:scale-105 hover:shadow-lg"
-          >
+        >
           Virtual Labs
         </a>
 
+        {/* Mobile Menu Button */}
         <button className="lg:hidden text-2xl" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FiX /> : <FiMenu />}
         </button>
       </nav>
+
+      {/* Mobile Menu */}
       <div
-        className={`lg:hidden  transition-all duration-700 ease-out pb-8 ${
-          isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+        className={`lg:hidden transition-all duration-500 ease-out bg-white shadow-md ${
+          isOpen ? "max-h-screen opacity-100 py-4" : "max-h-0 opacity-0 overflow-hidden"
         }`}
       >
-        <ul className="flex flex-col items-center space-y-4 py-4 text-gray-700 font-medium">
+        <ul className="flex flex-col items-center space-y-4 text-gray-700 font-medium">
           {navLinks.map((item, index) => (
             <li key={index} className="relative group">
               <a
@@ -102,6 +121,7 @@ const Navbar = () => {
           ))}
         </ul>
 
+        {/* Virtual Labs Button (Mobile) */}
         <a
           href="#virtuallabs"
           rel="noopener noreferrer"

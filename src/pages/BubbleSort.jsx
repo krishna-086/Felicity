@@ -293,6 +293,7 @@ const Bubble = () => {
         </div>
       </div>
       {/* Bottom Navbar for Mobile */}
+<<<<<<< HEAD
 <div className="fixed bottom-0 w-full bg-white shadow-lg border-t-4 border-orange-500 p-4 flex justify-around md:hidden">
   <button
     onClick={() => {
@@ -306,6 +307,68 @@ const Bubble = () => {
     <img src="/logo/aim.png" alt="Aim" className="w-6 h-6" />
     <span className="text-xs">Aim</span>
   </button>
+=======
+      <div className="fixed bottom-0 w-full bg-white shadow-lg border-t-4 border-orange-500 p-4 flex justify-around md:hidden">
+        <button
+          onClick={() => setSelected("Aim")}
+          className={selected === "Aim" ? "text-[#085d90]" : "text-gray-700"}
+        >
+          <Home size={24} />
+        </button>
+        <Link to="./demo">
+  <button
+    onClick={() => setSelected("Bubble Sort - Demo")}
+    className={
+      selected === "Bubble Sort - Demo"
+        ? "text-[#085d90]"
+        : "text-gray-700"
+    }
+  >
+    <BookOpen size={24} />
+  </button>
+</Link>
+        <button
+          onClick={() => setSelected("Bubble Sort - Quiz")}
+          className={
+            selected === "Bubble Sort - Quiz"
+              ? "text-[#085d90]"
+              : "text-gray-700"
+          }
+        >
+          <List size={24} />
+        </button>
+        <button
+          onClick={() => setMoreOpen(!moreOpen)}
+          className="text-gray-700"
+        >
+          <MoreHorizontal size={24} />
+        </button>
+      </div>
+      {/* More Options */}
+      {moreOpen && (
+        <div className="fixed bottom-16 left-0 right-0 bg-white shadow-lg border-t border-gray-300 p-4 md:hidden">
+          <div className="w-full max-h-[70vh] overflow-y-auto">
+            <ul className="space-y-2">
+              {/* General Section */}
+              <li
+                className={headingItemClass("Aim", selected)}
+                onClick={() => {
+                  setSelected("Aim");
+                  setMoreOpen(false);
+                }}
+              >
+                Aim
+              </li>
+              <li
+                className={headingItemClass("Overview", selected)}
+                onClick={() => {
+                  setSelected("Overview");
+                  setMoreOpen(false);
+                }}
+              >
+                Overview
+              </li>
+>>>>>>> 501b76b06ae040598ae5b279a82ba4445add5c7b
 
   <button
     onClick={() => {
