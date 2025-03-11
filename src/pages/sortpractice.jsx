@@ -1,132 +1,223 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { FaUndo, FaPlay, FaRedo, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaUndo, FaRedo, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 
-const SortPractice= () => {
-  const [array, setArray] = useState([29, 47, 17, 68, 49]);
+const BubbleSortPractice = () => {
+  const initialArray = [29, 47, 17, 68, 49]; // Typical array from Virtual Labs
+  const [array, setArray] = useState([...initialArray]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [passIndex, setPassIndex] = useState(0);
+  const [comparing, setComparing] = useState([0, 1]);
   const [history, setHistory] = useState([]);
-  const [currentStep, setCurrentStep] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [feedback, setFeedback] = useState(null);
-  const [comparing, setComparing] = useState(null);
-  const [userSteps, setUserSteps] = useState([]);
-  const [isCompleted, setIsCompleted] = useState(false);
 
-  let correctSteps = [];
-  let correctArray = [...array];
-  
-  const computeCorrectSteps = () => {
-    correctSteps = [];
-    for (let i = 0; i < correctArray.length; i++) {
-      for (let j = 0; j < correctArray.length - i - 1; j++) {
-        if (correctArray[j] > correctArray[j + 1]) {
-          correctSteps.push({
-            indices: [j, j + 1],
-            action: "swap",
-            newArray: [...correctArray],
-          });
-          [correctArray[j], correctArray[j + 1]] = [correctArray[j + 1], correctArray[j]];
-        } else {
-          correctSteps.push({
-            indices: [j, j + 1],
-            action: "continue",
-            newArray: [...correctArray],
-          });
-        }
-      }
+  useEffect(() => {
+    if (currentIndex < array.length - 1 - passIndex) {
+      setComparing([currentIndex, currentIndex + 1]);
     }
-  };
-  computeCorrectSteps();
+    const isSorted = array.every((num, idx) => idx === 0 || num >= array[idx - 1]);
+    setIsComplete(isSorted && passIndex >= array.length - 1);
+  }, [array, currentIndex, passIndex]);
 
-  const handleUserAction = (action) => {
-    if (currentStep >= correctSteps.length) return;
-    
-    const { indices, newArray, action: correctAction } = correctSteps[currentStep];
-    setComparing(indices);
-    
-    let updatedUserSteps = [...userSteps, { indices, action }];
-    setUserSteps(updatedUserSteps);
+  const handleSwap = () => {
+    if (isComplete || isSubmitted) return;
 
-    if (action === correctAction) {
-      setFeedback({ message: "Correct!", type: "success" });
-      setHistory([...history, { array: [...newArray], indices, action }]);
-      setArray([...newArray]);
+    const arr = [...array];
+    const shouldSwap = arr[currentIndex] > arr[currentIndex + 1];
+
+    if (shouldSwap) {
+      [arr[currentIndex], arr[currentIndex + 1]] = [arr[currentIndex + 1], arr[currentIndex]];
+      setArray(arr);
+      setHistory([...history, { array: [...array], indices: [currentIndex, currentIndex + 1], action: "swap" }]);
+      setFeedback({ message: "Correct! Elements swapped.", type: "success" });
+      moveToNext();
     } else {
-      setFeedback({ message: "Incorrect move!", type: "error" });
+      setFeedback({ message: "Incorrect! No swap needed here.", type: "error" });
     }
 
-    setCurrentStep(currentStep + 1);
-    if (currentStep + 1 === correctSteps.length) {
-      setIsCompleted(true);
+    setTimeout(() => setFeedback(null), 2000);
+  };
+
+  const handleNext = () => {
+    if (isComplete || isSubmitted) return;
+
+    const arr = [...array];
+    const shouldSwap = arr[currentIndex] > arr[currentIndex + 1];
+
+    if (!shouldSwap) {
+      setHistory([...history, { array: [...array], indices: [currentIndex, currentIndex + 1], action: "next" }]);
+      setFeedback({ message: "Correct! No swap needed.", type: "success" });
+      moveToNext();
+    } else {
+      setFeedback({ message: "Incorrect! These elements should be swapped.", type: "error" });
+    }
+
+    setTimeout(() => setFeedback(null), 2000);
+  };
+
+  const moveToNext = () => {
+    if (currentIndex < array.length - 2 - passIndex) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      setPassIndex(passIndex + 1);
+      setCurrentIndex(0);
     }
   };
 
   const handleUndo = () => {
-    if (history.length === 0) return;
-    const lastStep = history.pop();
-    setArray(lastStep.array);
-    setCurrentStep(currentStep - 1);
-    setUserSteps(userSteps.slice(0, -1));
+    if (history.length === 0 || isSubmitted) return;
+
+    const lastMove = history[history.length - 1];
+    setArray([...lastMove.array]);
+    setHistory(history.slice(0, -1));
     setFeedback(null);
+
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    } else if (passIndex > 0) {
+      setPassIndex(passIndex - 1);
+      setCurrentIndex(array.length - 2 - passIndex);
+    }
   };
 
   const handleReset = () => {
-    setArray([29, 47, 17, 68, 49]);
+    setArray([...initialArray]);
+    setCurrentIndex(0);
+    setPassIndex(0);
+    setComparing([0, 1]);
     setHistory([]);
-    setUserSteps([]);
-    setCurrentStep(0);
+    setIsComplete(false);
+    setIsSubmitted(false);
     setFeedback(null);
-    setComparing(null);
-    setIsCompleted(false);
+  };
+
+  const handleSubmit = () => {
+    const sortedArray = [...initialArray].sort((a, b) => a - b);
+    const isCorrect = JSON.stringify(array) === JSON.stringify(sortedArray);
+    setIsSubmitted(true);
+    setFeedback({
+      message: isCorrect ? "Congratulations! Array sorted correctly." : "Incorrect! Array not sorted.",
+      type: isCorrect ? "success" : "error",
+    });
   };
 
   return (
-    <div className="min-h-screen  flex flex-col items-center p-6">
-      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-3xl text-center">
-        <h1 className="text-3xl font-bold text-blue-800 mb-6">Bubble Sort Practice</h1>
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4 sm:p-6">
+      <div className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 w-full max-w-4xl text-center">
+        <h1 className="text-2xl sm:text-3xl font-bold text-blue-800 mb-6">
+          Bubble Sort Practice
+        </h1>
 
-        <div className="flex gap-2 mb-6 items-end h-60 justify-center">
+        {/* Instructions */}
+        <div className="mb-6 text-sm sm:text-base text-gray-600 bg-blue-50 p-4 rounded-lg">
+          <p>Sort the array using Bubble Sort:</p>
+          <ul className="list-disc list-inside text-left">
+            <li>Click "Swap" to swap highlighted elements if they are out of order.</li>
+            <li>Click "Next" if no swap is needed.</li>
+            <li>Use "Undo" to revert the last move, "Reset" to start over, and "Submit" to check your result.</li>
+          </ul>
+        </div>
+
+        {/* Progress */}
+        <div className="mb-4 text-sm sm:text-base text-gray-600">
+          <p>Pass: {passIndex + 1} of {array.length - 1}</p>
+          <p>
+            Comparing: <span className="font-semibold">{array[comparing[0]]}</span> vs{" "}
+            <span className="font-semibold">{array[comparing[1]]}</span>
+          </p>
+        </div>
+
+        {/* Array Visualization */}
+        <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 items-end justify-center h-64">
           {array.map((num, index) => (
             <motion.div
               key={index}
-              className={`w-12 text-center text-white font-bold p-2 rounded-md transition-all duration-300 ${
-                comparing && comparing.includes(index) ? "bg-orange-500" : "bg-blue-700"
+              layout
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`w-10 sm:w-12 md:w-14 flex items-center justify-center text-white font-bold p-2 rounded-md shadow-md transition-all duration-300 ${
+                comparing.includes(index) && !isSubmitted
+                  ? "bg-orange-500 ring-2 ring-orange-300"
+                  : isSubmitted && feedback?.type === "success"
+                  ? "bg-green-500"
+                  : isSubmitted && feedback?.type === "error"
+                  ? "bg-red-500"
+                  : "bg-blue-700"
               }`}
-              style={{ height: `${num * 3}px` }}
+              style={{ height: `${num * 3}px`, minWidth: "40px" }}
             >
               {num}
             </motion.div>
           ))}
         </div>
 
-        <div className="flex gap-4 mb-6 justify-center">
-          <button onClick={() => handleUserAction("swap")} className="px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold shadow-md">
+        {/* Controls */}
+        <div className="flex flex-wrap gap-2 sm:gap-4 mb-6 justify-center">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleSwap}
+            disabled={isComplete || isSubmitted}
+            className="px-4 sm:px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white rounded-lg font-semibold shadow-md text-sm sm:text-base"
+          >
             Swap
-          </button>
-          <button onClick={() => handleUserAction("continue")} className="px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-semibold shadow-md">
-            Continue
-          </button>
-          <button onClick={handleUndo} className="px-6 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg font-semibold shadow-md flex items-center gap-2">
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleNext}
+            disabled={isComplete || isSubmitted}
+            className="px-4 sm:px-6 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white rounded-lg font-semibold shadow-md text-sm sm:text-base"
+          >
+            Next
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleUndo}
+            disabled={history.length === 0 || isSubmitted}
+            className="px-4 sm:px-6 py-2 bg-yellow-600 hover:bg-yellow-700 disabled:bg-gray-400 text-white rounded-lg font-semibold shadow-md flex items-center gap-2 text-sm sm:text-base"
+          >
             <FaUndo /> Undo
-          </button>
-          <button onClick={handleReset} className="px-6 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-semibold shadow-md flex items-center gap-2">
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleReset}
+            className="px-4 sm:px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-semibold shadow-md flex items-center gap-2 text-sm sm:text-base"
+          >
             <FaRedo /> Reset
-          </button>
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleSubmit}
+            disabled={isSubmitted}
+            className="px-4 sm:px-6 py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-400 text-white rounded-lg font-semibold shadow-md text-sm sm:text-base"
+          >
+            Submit
+          </motion.button>
         </div>
 
+        {/* Feedback */}
         {feedback && (
-          <div className={`p-4 mb-4 rounded-md ${feedback.type === "success" ? "bg-green-200 text-green-800" : "bg-red-200 text-red-800"}`}>
-            {feedback.type === "success" ? <FaCheckCircle className="inline mr-2" /> : <FaTimesCircle className="inline mr-2" />} {feedback.message}
-          </div>
-        )}
-
-        {isCompleted && (
-          <div className="mt-6 p-4 bg-blue-200 text-blue-800 rounded-md">
-            <FaCheckCircle className="inline mr-2" /> Exercise Completed! Well done!
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className={`p-4 rounded-md flex items-center justify-center gap-2 ${
+              feedback.type === "success" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+            }`}
+          >
+            {feedback.type === "success" ? <FaCheckCircle /> : <FaTimesCircle />}
+            {feedback.message}
+          </motion.div>
         )}
       </div>
     </div>
   );
 };
 
-export default SortPractice;
+export default BubbleSortPractice;
