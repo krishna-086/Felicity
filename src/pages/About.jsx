@@ -15,13 +15,7 @@ const AboutUs = () => {
         <h1 className="text-4xl font-bold text-gray-800 text-center md:text-left mb-6">
           Overview
         </h1>
-        <div className="w-full flex justify-center mb-8">
-          <img 
-            src="https://www.vlab.co.in/images/about.png" 
-            alt="About Virtual Labs" 
-            className="w-full max-w-3xl rounded-lg shadow-md"
-          />
-        </div>
+        
 
         <p className="text-gray-700 leading-relaxed text-lg text-center md:text-left">
           Virtual Labs project is an initiative of <strong>Ministry of Education (MoE), Government of India</strong> under 
@@ -51,8 +45,15 @@ const AboutUs = () => {
           The simulation-based experiments can be accessed remotely via the internet, making high-quality education 
           more accessible.
         </p>
+        <div className="w-full flex justify-center mb-8">
+          <img 
+            src="https://www.vlab.co.in/images/about.png" 
+            alt="About Virtual Labs" 
+            className="w-full max-w-3xl rounded-lg shadow-md"
+          />
+        </div>
       </div>
-    </div>
+      </div>
     </>
   );
 };
