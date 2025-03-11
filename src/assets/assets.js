@@ -16,6 +16,7 @@ export const LabCategories = [
             institution: "IIIT Hyderabad",
             referenceBooks: [],
             syllabusMapping: [],
+            labLink: "./computerscience/datastructure",
           },
           {
             title: "Data Structures - II",

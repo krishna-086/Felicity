@@ -1,40 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaStar } from "react-icons/fa";
 import { MdOutlineSwapHoriz, MdOutlineDone } from "react-icons/md";
 import { AiOutlineUndo, AiOutlineReload } from "react-icons/ai";
 
 const BubbleSortExercise = () => {
-  const [array, setArray] = useState([29, 47, 17, 68, 49]);
-  const [userMoves, setUserMoves] = useState([]);
+  const initialArray = [3, 3, 9, 7, 6, 3, 2, 5, 4, 6, 5, 5];
+  const [array, setArray] = useState([...initialArray]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [passIndex, setPassIndex] = useState(0);
-  const [comparing, setComparing] = useState([0, 1]);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(null);
+  const [userMoves, setUserMoves] = useState([]);
+  const [iterations, setIterations] = useState(0);
 
-  useEffect(() => {
-    if (currentIndex < array.length - 1) {
-      setComparing([currentIndex, currentIndex + 1]);
+  const handleNext = () => {
+    if (iterations < 6) {
+      setIterations(iterations + 1);
+      setCurrentIndex(currentIndex + 1);
+      if (currentIndex >= array.length - 2) {
+        setCurrentIndex(0);
+        setPassIndex(passIndex + 1);
+      }
     }
-  }, [currentIndex]);
+  };
 
-  const handleMove = (action) => {
-    if (passIndex >= array.length - 1) return;
+  const handleSwap = () => {
     let arr = [...array];
-    let move = { index: currentIndex, action };
+    let move = { index: currentIndex, swapped: false };
 
-    if (action === "swap" && arr[currentIndex] > arr[currentIndex + 1]) {
+    if (arr[currentIndex] > arr[currentIndex + 1]) {
       [arr[currentIndex], arr[currentIndex + 1]] = [arr[currentIndex + 1], arr[currentIndex]];
+      move.swapped = true;
     }
 
     setUserMoves([...userMoves, move]);
     setArray(arr);
     setCurrentIndex(currentIndex + 1);
 
-    if (currentIndex === array.length - 2) {
-      setPassIndex(passIndex + 1);
+    if (currentIndex >= array.length - 2) {
       setCurrentIndex(0);
+      setPassIndex(passIndex + 1);
     }
   };
 
@@ -43,34 +46,32 @@ const BubbleSortExercise = () => {
     let prevMoves = [...userMoves];
     let lastMove = prevMoves.pop();
     let arr = [...array];
-    if (lastMove.action === "swap") {
+
+    if (lastMove.swapped) {
       [arr[lastMove.index], arr[lastMove.index + 1]] = [arr[lastMove.index + 1], arr[lastMove.index]];
     }
+
     setUserMoves(prevMoves);
     setArray(arr);
     setCurrentIndex(lastMove.index);
   };
 
-  const submitExercise = () => {
-    const sortedArray = [...array].sort((a, b) => a - b);
-    setIsCorrect(JSON.stringify(array) === JSON.stringify(sortedArray));
-    setIsSubmitted(true);
-  };
-
   const resetExercise = () => {
-    setArray([29, 47, 17, 68, 49]);
+    setArray([...initialArray]);
     setUserMoves([]);
     setCurrentIndex(0);
     setPassIndex(0);
-    setComparing([0, 1]);
-    setIsSubmitted(false);
-    setIsCorrect(null);
+    setIterations(0);
+  };
+
+  const submitExercise = () => {
+    console.log("Submitted!");
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4 sm:p-6">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
       <div className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 w-full max-w-3xl text-center">
-        <h1 className="text-2xl sm:text-3xl font-bold text-blue-800 mb-4 sm:mb-6">Bubble Sort Exercise</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-blue-800 mb-6">Bubble Sort Exercise</h1>
 
         <div className="flex flex-wrap gap-2 mb-6 items-end justify-center">
           {array.map((num, index) => (
@@ -78,9 +79,9 @@ const BubbleSortExercise = () => {
               key={index}
               layout
               className={`w-10 sm:w-12 text-center text-white font-bold p-2 rounded-md transition-all duration-300 ${
-                comparing.includes(index) ? "bg-yellow-500" : "bg-blue-700"
+                index === currentIndex || index === currentIndex + 1 ? "bg-yellow-500" : "bg-blue-700"
               }`}
-              style={{ height: `${num * 2.5}px` }}
+              style={{ height: `${num * 10}px` }}
             >
               {num}
             </motion.div>
@@ -89,16 +90,16 @@ const BubbleSortExercise = () => {
 
         <div className="flex flex-wrap gap-3 sm:gap-4 mb-6 justify-center">
           <button
-            onClick={() => handleMove("swap")}
+            onClick={handleNext}
+            className="px-4 sm:px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold shadow-md flex items-center gap-2"
+          >
+            <MdOutlineDone /> Next
+          </button>
+          <button
+            onClick={handleSwap}
             className="px-4 sm:px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold shadow-md flex items-center gap-2"
           >
             <MdOutlineSwapHoriz /> Swap
-          </button>
-          <button
-            onClick={() => handleMove("continue")}
-            className="px-4 sm:px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold shadow-md flex items-center gap-2"
-          >
-            <MdOutlineDone /> Continue
           </button>
           <button
             onClick={undoMove}
@@ -120,16 +121,6 @@ const BubbleSortExercise = () => {
         >
           Submit
         </button>
-
-        {isSubmitted && (
-          <div className="mt-6 bg-gray-100 shadow-md p-4 rounded-lg w-full border border-gray-300">
-            {isCorrect ? (
-              <p className="text-green-600 font-bold">Great job! You sorted the array correctly.</p>
-            ) : (
-              <p className="text-red-600 font-bold">Sorry, your sorting was incorrect.</p>
-            )}
-          </div>
-        )}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BookOpen, FileText, ChevronDown, ChevronRight, ExternalLink } from "lucide-react";
 
-const LabCard = ({ title, institution, referenceBooks, syllabusMapping }) => {
+const LabCard = ({ title, institution, referenceBooks, syllabusMapping, labLink }) => {
   const [showInfo, setShowInfo] = useState(null);
 
   const toggleInfo = (type) => (e) => {
@@ -27,9 +27,17 @@ const LabCard = ({ title, institution, referenceBooks, syllabusMapping }) => {
               <span className="text-base font-semibold bg-blue-100 text-[#1e3a8a] px-3 py-1 rounded">{institution}</span>
             </div>
           </div>
-          <div className="flex items-center text-[#1e3a8a] bg-blue-100 p-1.5 rounded-full">
-            <ExternalLink size={16} />
-          </div>
+          
+          {labLink && (
+            <a
+              href={labLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-[#1e3a8a] bg-blue-100 p-1.5 rounded-full"
+            >
+              <ExternalLink size={16} />
+            </a>
+          )}
         </div>
       </div>
 
