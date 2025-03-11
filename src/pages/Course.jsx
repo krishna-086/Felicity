@@ -112,50 +112,94 @@ const Course = () => {
                   Sorting
                 </h3>
                 <ul className="ml-6 list-disc">
-                  <li>Bubble Sort</li>
-                  <li>Merge Sort</li>
-                  <li>Heap Sort</li>
-                  <li>Quick Sort</li>
+                  <div className="flex">
+                    <li>Bubble Sort&nbsp;&nbsp;</li>
+                    <StarRatingDisplay rating={4} />
+                  </div>
+                  <div className="flex">
+                    <li>Merge Sort&nbsp;&nbsp;</li>
+                    <StarRatingDisplay rating={3.5} />
+                  </div>
+                  <div className="flex">
+                    <li>Heap Sort&nbsp;&nbsp;</li>
+                    <StarRatingDisplay rating={4} />
+                  </div>
+                  <div className="flex">
+                    <li>Quick Sort&nbsp;&nbsp;</li>
+                    <StarRatingDisplay rating={4} />
+                  </div>
                 </ul>
 
                 <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">
                   Graphs
                 </h3>
                 <ul className="ml-6 list-disc">
-                  <li>Depth First Search</li>
-                  <li>Breadth First Search</li>
+                  <div className="flex">
+                    <li>Depth First Search&nbsp;&nbsp;</li>
+                    <StarRatingDisplay rating={3.5} />
+                  </div>
+                  <div className="flex">
+                    <li>Breadth First Search&nbsp;&nbsp;</li>
+                    <StarRatingDisplay rating={4} />
+                  </div>
                 </ul>
 
                 <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">
                   Trees
                 </h3>
                 <ul className="ml-6 list-disc">
-                  <li>Tree Traversal</li>
-                  <li>Binary Search Trees</li>
+                  <div className="flex">
+                    <li>Tree Traversal&nbsp;&nbsp;</li>
+                    <StarRatingDisplay rating={3.5} />
+                  </div>
+                  <div className="flex">
+                    <li>Binary Search Trees&nbsp;&nbsp;</li>
+                    <StarRatingDisplay rating={4} />
+                  </div>
                 </ul>
 
                 <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">
                   Stacks and Queues
                 </h3>
                 <ul className="ml-6 list-disc">
-                  <li>Stacks and Queues</li>
-                  <li>Infix to Postfix</li>
+                  <div className="flex">
+                    <li>Stacks and Queues&nbsp;&nbsp;</li>
+                    <StarRatingDisplay rating={4} />
+                  </div>
+                  <div className="flex">
+                    <li>Infix to Postfix&nbsp;&nbsp;</li>
+                    <StarRatingDisplay rating={3.5} />
+                  </div>
                 </ul>
 
                 <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">
                   Searching
                 </h3>
                 <ul className="ml-6 list-disc">
-                  <li>Unsorted Arrays</li>
-                  <li>Hashtables</li>
+                  <div className="flex">
+                    <li>Unsorted Arrays&nbsp;&nbsp;</li>
+                    <StarRatingDisplay rating={4} />
+                  </div>
+                  <div className="flex">
+                    <li>Hashtables&nbsp;&nbsp;</li>
+                    <StarRatingDisplay rating={4.5} />
+                  </div>
                 </ul>
 
                 <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">
                   Linked Lists
                 </h3>
                 <ul className="ml-6 list-disc">
-                  <li>Linked Lists</li>
-                  <li>Polynomial Arithmetic using Linked Lists</li>
+                  <div className="flex">
+                    <li>Linked Lists&nbsp;&nbsp;</li>
+                    <StarRatingDisplay rating={4.5} />
+                  </div>
+                  <div className="flex">
+                    <li>
+                      Polynomial Arithmetic using Linked Lists&nbsp;&nbsp;
+                    </li>
+                    <StarRatingDisplay rating={4.5} />
+                  </div>
                 </ul>
               </div>
             )}
