@@ -20,8 +20,9 @@ const Home = () => {
 
   return (
     <>
+    
       <Navbar />
-      <div className="mt-33 sm:mt-27 flex justify-center m-5">
+      <div className="mt-33 sm:mt-29 flex justify-center m-5">
         <ImageCarousel
           images={images}
           autoPlay={true}

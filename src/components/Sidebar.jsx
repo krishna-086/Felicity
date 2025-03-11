@@ -71,6 +71,12 @@ const Sidebar = ({ setSelected, selected }) => {
               Exercise
             </Link>
           </li>
+          <li
+            className={childItemClass("Bubble Sort - Quiz", selected)}
+            onClick={() => setSelected("Bubble Sort - Quiz")}
+          >
+            Quiz
+          </li>
         </AccordionItem>
 
         {/* Optimized Bubble Sort Section */}
