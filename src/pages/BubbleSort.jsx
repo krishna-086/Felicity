@@ -354,27 +354,33 @@ const Bubble = () => {
 
               {/* Bubble Sort Accordion */}
               <AccordionItem title="Bubble Sort">
-                {[
-                  "Bubble Sort - Aim",
-                  "Bubble Sort - Concept",
-                  "Bubble Sort - Algorithm",
-                  "Bubble Sort - Demo",
-                  "Bubble Sort - Practice",
-                  "Bubble Sort - Exercise",
-                  "Bubble Sort - Quiz",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className={childItemClass(item, selected)}
-                    onClick={() => {
-                      setSelected(item);
-                      setMoreOpen(false);
-                    }}
-                  >
-                    {item.split("- ")[1]}
-                  </li>
-                ))}
-              </AccordionItem>
+  {[
+    { text: "Aim" },
+    { text: "Concept" },
+    { text: "Algorithm" },
+    { text: "Demo", link: "./demo" },
+    { text: "Practice", link: "./practice" },
+    { text: "Exercise", link: "./exercise" },
+    { text: "Quiz" },
+  ].map(({ text, link }) => (
+    <li
+      key={text}
+      className={childItemClass(`Bubble Sort - ${text}`, selected)}
+      onClick={() => {
+        setSelected(`Bubble Sort - ${text}`);
+        setMoreOpen(false);
+      }}
+    >
+      {link ? (
+        <Link to={link} className="w-full h-full block">
+          {text}
+        </Link>
+      ) : (
+        text
+      )}
+    </li>
+  ))}
+</AccordionItem>
 
               {/* Optimized Bubble Sort Accordion */}
               <AccordionItem title="Optimized Bubble Sort">
