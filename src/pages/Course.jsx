@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Footer from "../components/footer";
 import StarRatingDisplay from "../components/starDisplay";
 import {
@@ -107,58 +108,47 @@ const Course = () => {
               </p>
             )}
             {selected === "List of experiments" && (
-              <div className="text-gray-700 leading-relaxed text-lg">
-                <h3 className="text-2xl font-semibold text-[#085d90] mb-4">
-                  Sorting
-                </h3>
-                <ul className="ml-6 list-disc">
-                  <li>Bubble Sort</li>
-                  <li>Merge Sort</li>
-                  <li>Heap Sort</li>
-                  <li>Quick Sort</li>
-                </ul>
+  <div className="text-gray-700 leading-relaxed text-lg">
+    <h3 className="text-2xl font-semibold text-[#085d90] mb-4">Sorting</h3>
+    <ul className="ml-6 list-disc">
+      <li><Link to="/exp/bubble-sort" className="hover:text-[#085d90]">Bubble Sort</Link></li>
+      <li><Link to="/exp/merge-sort" className="hover:text-[#085d90]">Merge Sort</Link></li>
+      <li><Link to="/exp/heap-sort" className="hover:text-[#085d90]">Heap Sort</Link></li>
+      <li><Link to="/exp/quick-sort" className="hover:text-[#085d90]">Quick Sort</Link></li>
+    </ul>
 
-                <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">
-                  Graphs
-                </h3>
-                <ul className="ml-6 list-disc">
-                  <li>Depth First Search</li>
-                  <li>Breadth First Search</li>
-                </ul>
+    <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">Graphs</h3>
+    <ul className="ml-6 list-disc">
+      <li><Link to="/exp/dfs" className="hover:text-[#085d90]">Depth First Search</Link></li>
+      <li><Link to="/exp/bfs" className="hover:text-[#085d90]">Breadth First Search</Link></li>
+    </ul>
 
-                <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">
-                  Trees
-                </h3>
-                <ul className="ml-6 list-disc">
-                  <li>Tree Traversal</li>
-                  <li>Binary Search Trees</li>
-                </ul>
+    <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">Trees</h3>
+    <ul className="ml-6 list-disc">
+      <li><Link to="/exp/tree-traversal" className="hover:text-[#085d90]">Tree Traversal</Link></li>
+      <li><Link to="/exp/bst" className="hover:text-[#085d90]">Binary Search Trees</Link></li>
+    </ul>
 
-                <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">
-                  Stacks and Queues
-                </h3>
-                <ul className="ml-6 list-disc">
-                  <li>Stacks and Queues</li>
-                  <li>Infix to Postfix</li>
-                </ul>
+    <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">Stacks and Queues</h3>
+    <ul className="ml-6 list-disc">
+      <li><Link to="/exp/stacks-queues" className="hover:text-[#085d90]">Stacks and Queues</Link></li>
+      <li><Link to="/exp/infix-to-postfix" className="hover:text-[#085d90]">Infix to Postfix</Link></li>
+    </ul>
 
-                <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">
-                  Searching
-                </h3>
-                <ul className="ml-6 list-disc">
-                  <li>Unsorted Arrays</li>
-                  <li>Hashtables</li>
-                </ul>
+    <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">Searching</h3>
+    <ul className="ml-6 list-disc">
+      <li><Link to="/exp/unsorted-arrays" className="hover:text-[#085d90]">Unsorted Arrays</Link></li>
+      <li><Link to="/exp/hashtables" className="hover:text-[#085d90]">Hashtables</Link></li>
+    </ul>
 
-                <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">
-                  Linked Lists
-                </h3>
-                <ul className="ml-6 list-disc">
-                  <li>Linked Lists</li>
-                  <li>Polynomial Arithmetic using Linked Lists</li>
-                </ul>
-              </div>
-            )}
+    <h3 className="text-2xl font-semibold text-[#085d90] mt-6 mb-4">Linked Lists</h3>
+    <ul className="ml-6 list-disc">
+      <li><Link to="/exp/linked-lists" className="hover:text-[#085d90]">Linked Lists</Link></li>
+      <li><Link to="/exp/polynomial-arithmetic" className="hover:text-[#085d90]">Polynomial Arithmetic using Linked Lists</Link></li>
+    </ul>
+  </div>
+)}
+
 
             {selected === "Target Audience" && (
               <p className="text-gray-700 leading-relaxed text-lg">
