@@ -343,73 +343,121 @@ const Course = () => {
       </div>
 
       {/* Bottom Navbar for Mobile */}
-      <div className="fixed bottom-0 w-full bg-white shadow-lg border-t-4 border-orange-500 p-4 flex justify-around md:hidden">
-        <button
-          onClick={() => setSelected("Introduction")}
-          className={
-            selected === "Introduction" ? "text-[#085d90]" : "text-gray-700"
-          }
-        >
-          <Home size={24} />
-        </button>
-        <button
-          onClick={() => setSelected("Objective")}
-          className={
-            selected === "Objective" ? "text-[#085d90]" : "text-gray-700"
-          }
-        >
-          <BookOpen size={24} />
-        </button>
-        <button
-          onClick={() => setSelected("List of experiments")}
-          className={
-            selected === "List of experiments"
-              ? "text-[#085d90]"
-              : "text-gray-700"
-          }
-        >
-          <List size={24} />
-        </button>
-        <button
-          onClick={() => setMoreOpen(!moreOpen)}
-          className="text-gray-700"
-        >
-          <MoreHorizontal size={24} />
-        </button>
-      </div>
+<div className="fixed bottom-0 w-full bg-white shadow-lg border-t-4 border-orange-500 p-4 flex justify-around md:hidden">
+  <button
+    onClick={() => {
+      setSelected("Introduction");
+      setMoreOpen(false);
+    }}
+    className={`flex flex-col items-center ${
+      selected === "Introduction" ? "text-[#085d90] font-semibold" : "text-gray-700"
+    }`}
+  >
+    <img
+      src="/logo/intro.png"
+      alt="Intro"
+      className={`w-6 h-6 mx-auto ${
+        selected === "Introduction" ? "filter brightness-0 invert-[20%] sepia-[100%] saturate-[500%] hue-rotate-[190deg] contrast-[90%]" : ""
+      }`}
+    />
+    <p className="text-xs">Introduction</p>
+  </button>
 
-      {/* More Options */}
-      {moreOpen && (
-        <div className="fixed bottom-16 left-0 right-0 bg-white shadow-lg border-t border-gray-300 p-4 flex flex-col space-y-4 md:hidden">
-          <button
-            onClick={() => {
-              setSelected("Target Audience");
-              setMoreOpen(false);
-            }}
-            className="text-gray-700 flex items-center gap-2"
-          >
-            <Users size={20} /> Target Audience
-          </button>
-          <button
-            onClick={() => {
-              setSelected("Course Alignment");
-              setMoreOpen(false);
-            }}
-            className="text-gray-700 flex items-center gap-2"
-          >
-            <AlignJustify size={20} /> Course Alignment
-          </button>
-          <button
-            onClick={() => {
-              setSelected("Feedback");
-              setMoreOpen(false);
-            }}
-            className="text-gray-700 flex items-center gap-2"
-          >
-            <MessageSquare size={20} /> Feedback
-          </button>
-        </div>
-      )}
+  <button
+    onClick={() => {
+      setSelected("Objective");
+      setMoreOpen(false);
+    }}
+    className={`flex flex-col items-center ${
+      selected === "Objective" ? "text-[#085d90] font-semibold" : "text-gray-700"
+    }`}
+  >
+    <img
+      src="/logo/object.png"
+      alt="Objective"
+      className={`w-6 h-6 mx-auto ${
+        selected === "Objective" ? "filter brightness-0 invert-[20%] sepia-[100%] saturate-[500%] hue-rotate-[190deg] contrast-[90%]" : ""
+      }`}
+    />
+    <p className="text-xs">Objective</p>
+  </button>
+
+  <button
+    onClick={() => {
+      setSelected("List of experiments");
+      setMoreOpen(false);
+    }}
+    className={`flex flex-col items-center ${
+      selected === "List of experiments" ? "text-[#085d90] font-semibold" : "text-gray-700"
+    }`}
+  >
+    <img
+      src="/logo/exp.png"
+      alt="Experiments"
+      className={`w-6 h-6 mx-auto ${
+        selected === "List of experiments" ? "filter brightness-0 invert-[20%] sepia-[100%] saturate-[500%] hue-rotate-[190deg] contrast-[90%]" : ""
+      }`}
+    />
+    <p className="text-xs">Experiments</p>
+  </button>
+
+  <button
+    onClick={() => setMoreOpen(!moreOpen)}
+    className={`flex flex-col items-center ${
+      moreOpen ? "text-[#085d90] font-semibold" : "text-gray-700"
+    }`}
+  >
+    <img
+      src="/logo/more.png"
+      alt="More"
+      className={`w-6 h-6 mx-auto ${
+        moreOpen ? "filter brightness-0 invert-[20%] sepia-[100%] saturate-[500%] hue-rotate-[190deg] contrast-[90%]" : ""
+      }`}
+    />
+    <p className="text-xs">More</p>
+  </button>
+</div>
+
+{/* More Options */}
+{moreOpen && (
+  <div className="fixed bottom-16 left-0 right-0 bg-white shadow-lg border-t border-gray-300 p-4 flex flex-col space-y-4 md:hidden">
+    <button
+      onClick={() => {
+        setSelected("Target Audience");
+        setMoreOpen(false);
+      }}
+      className={`text-gray-700 font-semibold ${
+        selected === "Target Audience" ? "text-[#085d90]" : ""
+      }`}
+    >
+      Target Audience
+    </button>
+    <button
+      onClick={() => {
+        setSelected("Course Alignment");
+        setMoreOpen(false);
+      }}
+      className={`text-gray-700 font-semibold ${
+        selected === "Course Alignment" ? "text-[#085d90]" : ""
+      }`}
+    >
+      Course Alignment
+    </button>
+    <button
+      onClick={() => {
+        setSelected("Feedback");
+        setMoreOpen(false);
+      }}
+      className={`text-gray-700 font-semibold ${
+        selected === "Feedback" ? "text-[#085d90]" : ""
+      }`}
+    >
+      Feedback
+    </button>
+  </div>
+)}
+
+
 
       <Footer />
     </>
