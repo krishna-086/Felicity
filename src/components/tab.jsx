@@ -36,7 +36,7 @@ export default function Tabs() {
   const [activeTab, setActiveTab] = useState("objectives");
 
   return (
-    <div className="max-w-[80%] mx-auto  rounded-lg w-full">
+    <div className="max-w-[80%] mx-auto mt-10 rounded-lg w-full">
       {/* Tabs */}
       <div className="flex border-b border-gray-300">
         {tabs.map((tab) => (
