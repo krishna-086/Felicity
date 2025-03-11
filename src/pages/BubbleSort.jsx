@@ -28,6 +28,7 @@ import {
   AlignJustify,
   MessageSquare,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Bubble = () => {
   const [selected, setSelected] = useState("Aim");
@@ -37,7 +38,7 @@ const Bubble = () => {
   return (
     <>
       {/* Custom Navbar */}
-      <nav className="bg-white text-gray-700 py-2 shadow-lg fixed top-0 w-full z-50 border-b-4 border-orange-500">
+      <nav className="bg-white  text-gray-700 py-2 shadow-lg fixed top-0 w-full z-50 border-b-4 border-orange-500">
         <div className="max-w-9xl mx-auto px-5 md:px-10  flex justify-between items-center">
           <img src="/logo.jpg" alt="Logo" className="h-12" />
           <ul className="hidden md:flex items-center space-x-6 text-md uppercase font-medium">
@@ -50,24 +51,22 @@ const Bubble = () => {
               Report a Bug
             </li>
             <li>
-              <a
-                href="#virtuallabs"
-                rel="noopener noreferrer"
+              <Link
+                to="./practice"
                 className="border-2 border-[#085d90] text-[#085d90] px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-[#085d90] hover:text-white shadow-lg transform hover:scale-105 animate-pulse"
               >
                 Practice
-              </a>
+              </Link>
             </li>
           </ul>
           {/* Mobile Menu Button */}
           <div className="md:hidden ml-auto">
-            <a
-              href="#virtuallabs"
-              rel="noopener noreferrer"
-              className="right-0 border-2 border-[#085d90] text-[#085d90] px-6 py-3 rounded-lg text-base font-semibold transition duration-300 hover:bg-[#085d90] hover:text-white shadow-lg transform hover:scale-105 animate-pulse"
-            >
-              Practice
-            </a>
+          <Link
+                to="./practice"
+                className="border-2 border-[#085d90] text-[#085d90] px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-[#085d90] hover:text-white shadow-lg transform hover:scale-105 animate-pulse"
+              >
+                Practice
+              </Link>
           </div>
           {/* Mobile Menu Dropdown */}
           {/* {menuOpen && (
@@ -102,7 +101,7 @@ const Bubble = () => {
           style={{ height: "calc(100vh - 4rem)" }}
         >
           <Sidebar setSelected={setSelected} selected={selected} />
-          <div className="w-[100%] md:w-7/8 px-4 md:p-8 bg-white md:shadow-lg md:rounded-xl h-full overflow-y-auto">
+          <div className="w-[100%] md:w-7/8 px-4 md:p-8 bg-white md:shadow-lg md:rounded-xl overflow-y-auto">
             {/* Render main content based on selected state */}
             {selected === "Aim" && (
               <div className="content">
@@ -281,7 +280,9 @@ const Bubble = () => {
             )}
             {selected === "Bubble Sort - Quiz" && (
               <div className="content">
-                <h2 className="text-2xl md:text-3xl font-bold text-center">Quiz Section</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-center">
+                  Quiz Section
+                </h2>
                 <QuizApp />{" "}
                 {/* This is where your quiz component is rendered */}
               </div>

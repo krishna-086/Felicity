@@ -26,9 +26,9 @@ const App = () => {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/labs/computerscience/datastructure" element={<Course />} />
           <Route path="/exp/bubble-sort" element={<Bubble />} />
-          <Route path="/bubble-sort/demo" element={<BubbleSortVisualizer />} />
-          <Route path="/bubble-sort/practice" element={<BubbleSortPractice />} />
-          <Route path="/bubble-sort/exercise" element={<BubbleSortExercise />} />
+          <Route path="/exp/bubble-sort/demo" element={<BubbleSortVisualizer />} />
+          <Route path="/exp/bubble-sort/practice" element={<BubbleSortPractice />} />
+          <Route path="/exp/bubble-sort/exercise" element={<BubbleSortExercise />} />
           <Route path="/labs/:category" element={<LabPage />} />
 
         </Routes>
