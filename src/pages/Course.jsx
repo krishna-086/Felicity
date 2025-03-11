@@ -108,7 +108,7 @@ const Course = () => {
               </p>
             )}
             {selected === "List of experiments" && (
-{selected === "List of experiments" && (
+
   <div className="text-gray-700 leading-relaxed text-lg">
     <h3 className="text-2xl font-semibold text-[#085d90] mb-4">Sorting</h3>
     <ul className="ml-6 list-disc">
