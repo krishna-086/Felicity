@@ -7,7 +7,7 @@ const tabs = [
 
 const content = {
   objectives: (
-    <div className="p-6">
+    <div className="p-3">
       <h2 className="text-2xl font-semibold mb-8 text-center">Objectives</h2>
       <ul className="list-disc pl-5 space-y-5">
         <li>To provide remote-access to simulation-based Labs in various disciplines of Science and Engineering.</li>
@@ -17,7 +17,7 @@ const content = {
     </div>
   ),
   philosophy: (
-    <div className="p-6">
+    <div className="p-3">
       <h2 className="text-2xl font-semibold mb-8 text-center">The Philosophy</h2>
       <p className="mb-4">
         Good lab facilities and updated experiments are crucial for engineering colleges, but lack of resources often creates challenges. The Virtual Labs project aims to solve this by providing remote-access to simulation-based labs.

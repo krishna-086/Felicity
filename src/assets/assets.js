@@ -164,6 +164,38 @@ export const LabCategories = [
       },
     ],
   },
+  {
+    name: "Electrical & Communication Engineering",
+    labs:[],
+  },
+  {
+    name: "Electrical Engineering",
+    labs: [],
+  },
+  {
+    name: "Mechanical Engineering",
+    labs: [],
+  },
+  {
+    name: "Chemical Engineering",
+    labs: [],
+  },
+  {
+    name: "Biotechnology & Biomedical Engineering",
+    labs: [],
+  },
+  {
+    name: "Civil Engineering",
+    labs: [],
+  },
+  {
+    name: "Physical Engineering",
+    labs: [],
+  },
+  {
+    name: "Chemical Sciences",
+    labs: [],
+  },
 ];
 
 export const announcements = [
@@ -179,5 +211,84 @@ export const announcements = [
   {
     text: "To enroll as a Nodal Center, kindly submit the Expression of Interest (EOI) Form 2025.",
     link: "https://drive.google.com/file/d/1FGJ21hQmJ40gtPh264ZS6QDtT11hSTTv/view?usp=sharing",
+  },
+];
+export const testimonials = [
+  {
+    quote:
+      "One of the primary advantages associated with the utilization of Virtual Laboratory is the ability for students to engage in self-paced learning...",
+    name: "Dr. Mohd Zubair Ansari",
+    designation: "National Institute of Technology Srinagar",
+  },
+  {
+    quote:
+      "Virtual Labs are implemented in USAR, GGSIPU and are useful in understanding the theories and concepts of science...",
+    name: "Dr. Khyati Chopra",
+    designation: "USAR, GGSIPU",
+  },
+  {
+    quote:
+      "Virtual Labs is the knowledge seed for the students of the science and technology domain...",
+    name: "Dr. Pankaj K. Goswami",
+    designation: "Amity University Uttar Pradesh, Lucknow",
+  },
+  {
+    quote:
+      "Virtual Labs help bridge the gap between theoretical knowledge and practical application...",
+    name: "Dr. A. K. Verma",
+    designation: "IIT Delhi",
+  },
+  {
+    quote:
+      "With Virtual Labs, institutions can expand access to high-quality laboratory experiences...",
+    name: "Prof. Suresh Kumar",
+    designation: "Delhi University",
+  },
+];
+export const labs = [
+  {
+    title: "Computer Science & Engineering",
+    color: "bg-[#F2D567]",
+    image: "/logo/image 4.png",
+  },
+  {
+    title: "Electrical & Communication Engineering",
+    color: "bg-[#8BE9FF]",
+    image: "/logo/image 3.png",
+  },
+  {
+    title: "Electrical Engineering",
+    color: "bg-[#D9FF9B]",
+    image: "/logo/image 5.png",
+  },
+  {
+    title: "Mechanical Engineering",
+    color: "bg-[#F2D567]",
+    image: "/logo/image 12.png",
+  },
+  {
+    title: "Chemical Engineering",
+    color: "bg-[#8BE9FF]",
+    image: "/logo/image 17.png",
+  },
+  {
+    title: "Biotechnology & Biomedical Engineering",
+    color: "bg-[#D9FF9B]",
+    image: "/logo/image.png",
+  },
+  {
+    title: "Civil Engineering",
+    color: "bg-[#F2D567]",
+    image: "/logo/image 19.png",
+  },
+  {
+    title: "Physical Engineering",
+    color: "bg-[#8BE9FF]",
+    image: "/logo/image 18.png",
+  },
+  {
+    title: "Chemical Sciences",
+    color: "bg-[#D9FF9B]",
+    image: "/logo/image 13.png",
   },
 ];
