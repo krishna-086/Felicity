@@ -46,42 +46,39 @@ const Chatbot = () => {
     <div className="fixed bottom-5 right-5 z-50">
       {/* Chatbot Button */}
       <button
-  style={{ backgroundColor: "#085d90" }}
-  className="text-white p-3 rounded-full shadow-lg transition-all flex items-center justify-center"
-  onClick={toggleChat}
->
-  <MessageCircle size={20} />
-</button>
-
+        style={{ backgroundColor: "#085d90" }}
+        className="text-white p-4 rounded-full shadow-lg transition-all flex items-center justify-center fixed bottom-15 right-5"
+        onClick={toggleChat}
+      >
+        <MessageCircle size={24} />
+      </button>
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="w-80 h-96 bg-white rounded-lg shadow-lg flex flex-col fixed bottom-20 right-5">
+        <div className="w-80 h-96 bg-white rounded-lg shadow-lg flex flex-col fixed bottom-28 right-5">
           {/* Chat Header */}
           <div style={{ backgroundColor: "#085d90" }} className="text-white p-3 flex justify-between items-center rounded-t-lg">
-  <span className="font-bold">VirtuBot</span>
-  <button className="text-lg" onClick={toggleChat}>
-    <X size={20} />
-  </button>
-</div>
-
+            <span className="font-bold">VirtuBot</span>
+            <button className="text-lg" onClick={toggleChat}>
+              <X size={20} />
+            </button>
+          </div>
 
           {/* Chat Messages */}
           <div className="flex-1 p-3 overflow-y-auto space-y-2">
-          {messages.map((msg, index) => (
-  <div
-    key={index}
-    className="p-2 rounded-lg max-w-xs"
-    style={{
-      backgroundColor: msg.sender === "bot" ? "#E5E7EB" : "#288ecb",
-      color: msg.sender === "bot" ? "black" : "white",
-      alignSelf: msg.sender === "bot" ? "flex-start" : "flex-end"
-    }}
-  >
-    {msg.text}
-  </div>
-))}
-
+            {messages.map((msg, index) => (
+              <div
+                key={index}
+                className="p-2 rounded-lg max-w-xs"
+                style={{
+                  backgroundColor: msg.sender === "bot" ? "#E5E7EB" : "#288ecb",
+                  color: msg.sender === "bot" ? "black" : "white",
+                  alignSelf: msg.sender === "bot" ? "flex-start" : "flex-end"
+                }}
+              >
+                {msg.text}
+              </div>
+            ))}
           </div>
 
           {/* Chat Input */}
@@ -95,7 +92,7 @@ const Chatbot = () => {
               onKeyPress={(e) => e.key === "Enter" && handleUserMessage()}
             />
             <button style={{ backgroundColor: "#96CC75" }}
-              className="ml-2  text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all flex items-center"
+              className="ml-2 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all flex items-center"
               onClick={handleUserMessage}
             >
               <Send size={20} />
