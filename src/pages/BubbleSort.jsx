@@ -293,6 +293,21 @@ const Bubble = () => {
         </div>
       </div>
       {/* Bottom Navbar for Mobile */}
+<<<<<<< HEAD
+<div className="fixed bottom-0 w-full bg-white shadow-lg border-t-4 border-orange-500 p-4 flex justify-around md:hidden">
+  <button
+    onClick={() => {
+      setSelected("Aim");
+      setMoreOpen(false);
+    }}
+    className={`flex flex-col items-center ${
+      selected === "Aim" ? "text-[#085d90] font-bold" : "text-gray-700"
+    }`}
+  >
+    <img src="/logo/aim.png" alt="Aim" className="w-6 h-6" />
+    <span className="text-xs">Aim</span>
+  </button>
+=======
       <div className="fixed bottom-0 w-full bg-white shadow-lg border-t-4 border-orange-500 p-4 flex justify-around md:hidden">
         <button
           onClick={() => setSelected("Aim")}
@@ -353,82 +368,146 @@ const Bubble = () => {
               >
                 Overview
               </li>
+>>>>>>> 501b76b06ae040598ae5b279a82ba4445add5c7b
 
-              {/* Bubble Sort Accordion */}
-              <AccordionItem title="Bubble Sort">
-  {[
-    { text: "Aim" },
-    { text: "Concept" },
-    { text: "Algorithm" },
-    { text: "Demo", link: "./demo" },
-    { text: "Practice", link: "./practice" },
-    { text: "Exercise", link: "./exercise" },
-    { text: "Quiz" },
-  ].map(({ text, link }) => (
-    <li
-      key={text}
-      className={childItemClass(`Bubble Sort - ${text}`, selected)}
-      onClick={() => {
-        setSelected(`Bubble Sort - ${text}`);
-        setMoreOpen(false);
-      }}
-    >
-      {link ? (
-        <Link to={link} className="w-full h-full block">
-          {text}
-        </Link>
-      ) : (
-        text
-      )}
-    </li>
-  ))}
-</AccordionItem>
+  <button
+    onClick={() => {
+      setSelected("Bubble Sort - Demo");
+      setMoreOpen(false);
+    }}
+    className={`flex flex-col items-center ${
+      selected === "Bubble Sort - Demo" ? "text-[#085d90] font-bold" : "text-gray-700"
+    }`}
+  >
+    <img src="/logo/demo.png" alt="Demo" className="w-6 h-6" />
+    <span className="text-xs">Demo</span>
+  </button>
 
-              {/* Optimized Bubble Sort Accordion */}
-              <AccordionItem title="Optimized Bubble Sort">
-                {[
-                  "Optimized Bubble Sort - Aim",
-                  "Optimized Bubble Sort - Optimization Technique",
-                  "Optimized Bubble Sort - Demo",
-                  "Optimized Bubble Sort - Practice",
-                  "Optimized Bubble Sort - Exercise",
-                  "Optimized Bubble Sort - Quiz",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className={childItemClass(item, selected)}
-                    onClick={() => {
-                      setSelected(item);
-                      setMoreOpen(false);
-                    }}
-                  >
-                    {item.split("- ")[1]}
-                  </li>
-                ))}
-              </AccordionItem>
+  <button
+    onClick={() => {
+      setSelected("Bubble Sort - Quiz");
+      setMoreOpen(false);
+    }}
+    className={`flex flex-col items-center ${
+      selected === "Bubble Sort - Quiz" ? "text-[#085d90] font-bold" : "text-gray-700"
+    }`}
+  >
+    <img src="/logo/quiz.png" alt="Quiz" className="w-6 h-6" />
+    <span className="text-xs">Quiz</span>
+  </button>
 
-              {/* Other Items */}
-              {[
-                "Code Assessment",
-                "Posttest",
-                "Further Readings/References",
-                "Feedback",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className={headingItemClass(item, selected)}
-                  onClick={() => {
-                    setSelected(item);
-                    setMoreOpen(false);
-                  }}
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
+  <button
+    onClick={() => setMoreOpen(!moreOpen)}
+    className={`flex flex-col items-center ${
+      moreOpen ? "text-[#085d90] font-bold" : "text-gray-700"
+    }`}
+  >
+    <img src="/logo/more.png" alt="More" className="w-6 h-6" />
+    <span className="text-xs">More</span>
+  </button>
+</div>
+
+{/* More Options */}
+{moreOpen && (
+  <div className="fixed bottom-16 left-0 right-0 bg-white shadow-lg border-t border-gray-300 p-4 md:hidden">
+    <div className="w-full max-h-[70vh] overflow-y-auto">
+      <ul className="space-y-2">
+        {/* General Section */}
+        <li
+          className={headingItemClass("Aim", selected)}
+          onClick={() => {
+            setSelected("Aim");
+            setMoreOpen(false);
+          }}
+        >
+          Aim
+        </li>
+        <li
+          className={headingItemClass("Overview", selected)}
+          onClick={() => {
+            setSelected("Overview");
+            setMoreOpen(false);
+          }}
+        >
+          Overview
+        </li>
+
+        {/* Bubble Sort Accordion (Unchanged) */}
+        <AccordionItem title="Bubble Sort">
+          {[
+            { text: "Aim" },
+            { text: "Concept" },
+            { text: "Algorithm" },
+            { text: "Demo", link: "./demo" },
+            { text: "Practice", link: "./practice" },
+            { text: "Exercise", link: "./exercise" },
+            { text: "Quiz" },
+          ].map(({ text, link }) => (
+            <li
+              key={text}
+              className={childItemClass(`Bubble Sort - ${text}`, selected)}
+              onClick={() => {
+                setSelected(`Bubble Sort - ${text}`);
+                setMoreOpen(false);
+              }}
+            >
+              {link ? (
+                <Link to={link} className="w-full h-full block">
+                  {text}
+                </Link>
+              ) : (
+                text
+              )}
+            </li>
+          ))}
+        </AccordionItem>
+
+        {/* Optimized Bubble Sort Accordion (Unchanged) */}
+        <AccordionItem title="Optimized Bubble Sort">
+          {[
+            "Optimized Bubble Sort - Aim",
+            "Optimized Bubble Sort - Optimization Technique",
+            "Optimized Bubble Sort - Demo",
+            "Optimized Bubble Sort - Practice",
+            "Optimized Bubble Sort - Exercise",
+            "Optimized Bubble Sort - Quiz",
+          ].map((item) => (
+            <li
+              key={item}
+              className={childItemClass(item, selected)}
+              onClick={() => {
+                setSelected(item);
+                setMoreOpen(false);
+              }}
+            >
+              {item.split("- ")[1]}
+            </li>
+          ))}
+        </AccordionItem>
+
+        {/* Other Items */}
+        {[
+          "Code Assessment",
+          "Posttest",
+          "Further Readings/References",
+          "Feedback",
+        ].map((item) => (
+          <li
+            key={item}
+            className={headingItemClass(item, selected)}
+            onClick={() => {
+              setSelected(item);
+              setMoreOpen(false);
+            }}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+)}
+
       <Footer />
     </>
   );
