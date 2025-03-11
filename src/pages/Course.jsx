@@ -21,7 +21,7 @@ const Course = () => {
   return (
     <>
       {/* Custom Navbar */}
-      <nav className="bg-white text-gray-700 py-4 shadow-lg fixed top-0 w-full z-50 border-b-4 border-orange-500">
+      <nav className="bg-white text-gray-700 py-2 shadow-lg fixed top-0 w-full z-50 border-b-4 border-orange-500">
         <div className="max-w-9xl mx-auto px-10 flex justify-between items-center">
           <img src="/logo.jpg" alt="Logo" className="h-12" />
           {/* Desktop Menu */}
@@ -54,9 +54,9 @@ const Course = () => {
         )}
       </nav>
 
-      <div className="min-h-screen bg-gray-100 p-8 flex flex-col mt-20">
-        <h1 className="text-4xl font-bold text-[#085d90] mb-8 mt-4 text-left">
-          Computer Science and Engineering
+      <div className="min-h-screen bg-white md:bg-gray-100 py-8 px-4 md:p-8 flex flex-col mt-12">
+        <h1 className="text-3xl md:text-4xl font-bold text-[#085d90] mb-4 mt-4 text-center">
+          Data Structures-1
         </h1>
         <div className="w-full max-w-7xl flex gap-8">
           {/* Sidebar (Hidden in Mobile) */}
@@ -86,10 +86,7 @@ const Course = () => {
           </div>
 
           {/* Main Content */}
-          <div className="w-7/8 p-8 bg-white shadow-lg rounded-xl">
-            <h2 className="text-3xl font-semibold text-gray-800 mb-6">
-              Data Structures - 1
-            </h2>
+          <div className="w-[100] md:w-7/8 p-8 bg-white md:shadow-lg md:rounded-xl ">
             {selected === "Objective" && (
               <p className="text-gray-700 leading-relaxed text-lg">
                 The Virtual Lab for Data Structures will focus on creating an
