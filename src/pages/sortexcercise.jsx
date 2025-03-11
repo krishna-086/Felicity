@@ -13,6 +13,9 @@ const BubbleSortExercise = () => {
   const [passIndex, setPassIndex] = useState(0);
   const [userMoves, setUserMoves] = useState([]);
   const [iterations, setIterations] = useState(0);
+  const [selected, setSelected] = useState("Aim");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
 
   const handleNext = () => {
     if (iterations < array.length) {
@@ -30,7 +33,10 @@ const BubbleSortExercise = () => {
     let move = { index: currentIndex, swapped: false };
 
     if (arr[currentIndex] > arr[currentIndex + 1]) {
-      [arr[currentIndex], arr[currentIndex + 1]] = [arr[currentIndex + 1], arr[currentIndex]];
+      [arr[currentIndex], arr[currentIndex + 1]] = [
+        arr[currentIndex + 1],
+        arr[currentIndex],
+      ];
       move.swapped = true;
     }
 
@@ -51,7 +57,10 @@ const BubbleSortExercise = () => {
     let arr = [...array];
 
     if (lastMove.swapped) {
-      [arr[lastMove.index], arr[lastMove.index + 1]] = [arr[lastMove.index + 1], arr[lastMove.index]];
+      [arr[lastMove.index], arr[lastMove.index + 1]] = [
+        arr[lastMove.index + 1],
+        arr[lastMove.index],
+      ];
     }
 
     setUserMoves(prevMoves);
@@ -76,12 +85,15 @@ const BubbleSortExercise = () => {
       {/* Navbar */}
       <nav className="bg-white text-gray-700 py-2 shadow-lg fixed top-0 w-full z-50 border-b-4 border-orange-500">
         <div className="max-w-7xl mx-auto px-5 md:px-10 flex justify-between items-center">
-        <Link
-                to="/exp/bubble-sort"><img src="/logo.jpg" alt="Logo" className="h-12" /></Link>
+          <Link to="/exp/bubble-sort">
+            <img src="/logo.jpg" alt="Logo" className="h-12" />
+          </Link>
           <ul className="hidden md:flex items-center space-x-6 text-md uppercase font-medium">
             <li className="cursor-pointer hover:text-[#085d90]">Home</li>
             <li className="cursor-pointer hover:text-[#085d90]">Rate Me</li>
-            <li className="cursor-pointer hover:text-[#085d90]">Report a Bug</li>
+            <li className="cursor-pointer hover:text-[#085d90]">
+              Report a Bug
+            </li>
             <li>
               <Link
                 to="./practice"
@@ -103,8 +115,97 @@ const BubbleSortExercise = () => {
         </div>
       </nav>
 
+      
+
       {/* Main Content */}
-      <div className="flex flex-col items-center p-6 pt-24">
+      <div className="flex  items-center p-6 pt-24">
+      <div class="max-w-[40%] mr-30 bg-white shadow-lg rounded-xl p-4 h-full overflow-y-auto hidden md:block">
+        <ul class="space-y-1">
+          <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
+            Aim
+          </li>
+          <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
+            Overview
+          </li>
+          <div>
+            <div class="flex justify-between items-center py-2 cursor-pointer text-base font-medium uppercase text-gray-700 hover:text-[#064a73] px-2">
+              <span>Bubble Sort</span>
+              <span>
+                <i class="fas fa-chevron-up text-base"></i>
+              </span>
+            </div>
+            <ul class="px-2 space-y-1">
+              <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
+                Aim
+              </li>
+              <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
+                Concept
+              </li>
+              <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
+                Algorithm
+              </li>
+              <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
+                <a
+                  class="w-full h-full block"
+                  href="/exp/bubble-sort/demo"
+                  data-discover="true"
+                >
+                  Demo
+                </a>
+              </li>
+              <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
+                <a
+                  class="w-full h-full block"
+                  href="/exp/bubble-sort/practice"
+                  data-discover="true"
+                >
+                  Practice
+                </a>
+              </li>
+              <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
+                <a
+                  class="w-full h-full block"
+                  href="/exp/bubble-sort/exercise"
+                  data-discover="true"
+                >
+                  Exercise
+                </a>
+              </li>
+              <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-[#085d90] font-bold">
+                Quiz
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="flex justify-between items-center py-2 cursor-pointer text-base font-medium uppercase text-gray-700 hover:text-[#064a73] px-2">
+              <span>Optimized Bubble Sort</span>
+              <span>
+                <i class="fas fa-chevron-down text-base"></i>
+              </span>
+            </div>
+          </div>
+          <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
+            Code Assessment
+          </li>
+          <div>
+            <div class="flex justify-between items-center py-2 cursor-pointer text-base font-medium uppercase text-gray-700 hover:text-[#064a73] px-2">
+              <span>Analysis</span>
+              <span>
+                <i class="fas fa-chevron-down text-base"></i>
+              </span>
+            </div>
+          </div>
+          <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
+            Posttest
+          </li>
+          <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
+            Further Readings/References
+          </li>
+          <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
+            Feedback
+          </li>
+        </ul>
+      </div>
         <div className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 w-full max-w-3xl text-center">
           <h1 className="text-2xl sm:text-3xl font-bold text-blue-800 mb-20">
             Bubble Sort Exercise
@@ -173,17 +274,17 @@ const BubbleSortExercise = () => {
           <Home size={24} />
         </button>
         <Link to="./demo">
-  <button
-    onClick={() => setSelected("Bubble Sort - Demo")}
-    className={
-      selected === "Bubble Sort - Demo"
-        ? "text-[#085d90]"
-        : "text-gray-700"
-    }
-  >
-    <BookOpen size={24} />
-  </button>
-</Link>
+          <button
+            onClick={() => setSelected("Bubble Sort - Demo")}
+            className={
+              selected === "Bubble Sort - Demo"
+                ? "text-[#085d90]"
+                : "text-gray-700"
+            }
+          >
+            <BookOpen size={24} />
+          </button>
+        </Link>
         <button
           onClick={() => setSelected("Bubble Sort - Quiz")}
           className={
@@ -228,33 +329,36 @@ const BubbleSortExercise = () => {
 
               {/* Bubble Sort Accordion */}
               <AccordionItem title="Bubble Sort">
-  {[
-    { text: "Aim" },
-    { text: "Concept" },
-    { text: "Algorithm" },
-    { text: "Demo", link: "./demo" },
-    { text: "Practice", link: "./practice" },
-    { text: "Exercise", link: "./exercise" },
-    { text: "Quiz" },
-  ].map(({ text, link }) => (
-    <li
-      key={text}
-      className={childItemClass(`Bubble Sort - ${text}`, selected)}
-      onClick={() => {
-        setSelected(`Bubble Sort - ${text}`);
-        setMoreOpen(false);
-      }}
-    >
-      {link ? (
-        <Link to={link} className="w-full h-full block">
-          {text}
-        </Link>
-      ) : (
-        text
-      )}
-    </li>
-  ))}
-</AccordionItem>
+                {[
+                  { text: "Aim" },
+                  { text: "Concept" },
+                  { text: "Algorithm" },
+                  { text: "Demo", link: "./demo" },
+                  { text: "Practice", link: "./practice" },
+                  { text: "Exercise", link: "./exercise" },
+                  { text: "Quiz" },
+                ].map(({ text, link }) => (
+                  <li
+                    key={text}
+                    className={childItemClass(
+                      `Bubble Sort - ${text}`,
+                      selected
+                    )}
+                    onClick={() => {
+                      setSelected(`Bubble Sort - ${text}`);
+                      setMoreOpen(false);
+                    }}
+                  >
+                    {link ? (
+                      <Link to={link} className="w-full h-full block">
+                        {text}
+                      </Link>
+                    ) : (
+                      text
+                    )}
+                  </li>
+                ))}
+              </AccordionItem>
 
               {/* Optimized Bubble Sort Accordion */}
               <AccordionItem title="Optimized Bubble Sort">
