@@ -59,6 +59,7 @@ const BubbleSortVisualizer = () => {
   return (
     <div className="min-h-screen  flex flex-col items-center p-4 md:p-6">
       
+      
       <div className="bg-white shadow-lg rounded-xl p-6 md:p-8 w-full max-w-3xl text-center">
         <h1 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">Bubble Sort Visualizer</h1>
 
