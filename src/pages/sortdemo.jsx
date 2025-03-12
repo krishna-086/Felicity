@@ -6,6 +6,19 @@ import { Link } from "react-router-dom";
 import AccordionItem from "../components/Accordion";
 import { BookOpen, Home, List, MoreHorizontal } from "lucide-react";
 
+
+const childItemClass = (itemValue, selected) =>
+  `cursor-pointer transition-transform duration-300 text-base px-2 py-1  ${
+    selected === itemValue
+      ? "text-[#085d90] font-bold" // Already bold when selected
+      : "text-gray-700 hover:text-[#064a73] font-normal"
+  }`;
+  const headingItemClass = (itemValue, selected) =>
+    `cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase ${
+      selected === itemValue
+        ? "font-bold text-[#085d90]" // Make selected top-level items bold
+        : "font-medium text-gray-700 hover:text-[#064a73]"
+    }`;
 const BubbleSortVisualizer = () => {
   const [array, setArray] = useState([29, 47, 17, 68, 49]);
   const [speed, setSpeed] = useState(500);
@@ -16,6 +29,7 @@ const BubbleSortVisualizer = () => {
     pass: 0,
     message: "",
   });
+  
   const [comparing, setComparing] = useState(null);
   const [rating, setRating] = useState(0);
   const [selected, setSelected] = useState("Aim");
@@ -74,7 +88,7 @@ const BubbleSortVisualizer = () => {
       {/* Navbar */}
       <nav className="bg-white text-gray-700 py-2 shadow-lg fixed top-0 w-full z-50 border-b-4 border-orange-500">
         <div className="max-w-7xl mx-auto px-5 md:px-10 flex justify-between items-center">
-          <Link to="/exp/bubble-sort">
+          <Link to="/">
             <img src="/logo.jpg" alt="Logo" className="h-12" />
           </Link>
           <ul className="hidden md:flex items-center space-x-6 text-md uppercase font-medium">
@@ -85,7 +99,7 @@ const BubbleSortVisualizer = () => {
             </li>
             <li>
               <Link
-                to="./practice"
+                to="/exp/bubble-sort/practice"
                 className="border-2 border-[#085d90] text-[#085d90] px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-[#085d90] hover:text-white shadow-lg transform hover:scale-105 animate-pulse"
               >
                 Practice
@@ -95,7 +109,7 @@ const BubbleSortVisualizer = () => {
           {/* Mobile Button */}
           <div className="md:hidden ml-auto">
             <Link
-              to="./practice"
+              to="/exp/bubble-sort/practice"
               className="border-2 border-[#085d90] text-[#085d90] px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-[#085d90] hover:text-white shadow-lg transform hover:scale-105 animate-pulse"
             >
               Practice
@@ -278,9 +292,10 @@ const BubbleSortVisualizer = () => {
           onClick={() => setSelected("Aim")}
           className={selected === "Aim" ? "text-[#085d90]" : "text-gray-700"}
         >
-          <Home size={24} />
+          <Link to="/exp/bubble-sort/">
+                   <Home size={24} /> </Link>
         </button>
-        <Link to="./demo">
+        <Link to="/exp/bubble-sort/demo">
           <button
             onClick={() => setSelected("Bubble Sort - Demo")}
             className={
@@ -340,9 +355,9 @@ const BubbleSortVisualizer = () => {
                   { text: "Aim" },
                   { text: "Concept" },
                   { text: "Algorithm" },
-                  { text: "Demo", link: "./demo" },
-                  { text: "Practice", link: "./practice" },
-                  { text: "Exercise", link: "./exercise" },
+                  { text: "Demo", link: "/exp/bubble-sort/demo" },
+                  { text: "Practice", link: "/exp/bubble-sort/practice" },
+                  { text: "Exercise", link: "/exp/bubble-sort/exercise" },
                   { text: "Quiz" },
                 ].map(({ text, link }) => (
                   <li

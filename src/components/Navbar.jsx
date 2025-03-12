@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { FiMenu, FiSearch, FiX } from "react-icons/fi";
 
 const Navbar = () => {
@@ -32,9 +33,9 @@ const Navbar = () => {
       <nav className="container mx-auto flex items-center justify-between px-2 py-4">
         {/* Logo & Title */}
         <div className="flex items-center space-x-3">
-          <a href="/">
+          <Link to="/">
             <img src="/logo.jpg" alt="Logo" className="h-10 sm:h-14" />
-          </a>
+          </Link>
           <div className="hidden sm:block text-xs sm:text-sm md:text-base">
             <div className="font-semibold">An Initiative of</div>
             <div className="font-semibold">
@@ -52,15 +53,25 @@ const Navbar = () => {
         <ul className="hidden lg:flex space-x-6 text-gray-700 font-medium">
           {navLinks.map((item, index) => (
             <li key={index} className="relative group">
-              <a
-                href={item.link}
-                target={item.link.startsWith("http") ? "_blank" : "_self"}
-                rel="noopener noreferrer"
-                className="relative text-gray-700 text-md uppercase transition-colors duration-200"
-              >
-                {item.text}
-                <span className="absolute left-0 -bottom-[5px] w-0 h-[3px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              {item.link.startsWith("http") ? (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative text-gray-700 text-md uppercase transition-colors duration-200"
+                >
+                  {item.text}
+                  <span className="absolute left-0 -bottom-[5px] w-0 h-[3px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              ) : (
+                <Link
+                  to={item.link}
+                  className="relative text-gray-700 text-md uppercase transition-colors duration-200"
+                >
+                  {item.text}
+                  <span className="absolute left-0 -bottom-[5px] w-0 h-[3px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -85,16 +96,19 @@ const Navbar = () => {
         </div>
 
         {/* Virtual Labs Button (Desktop) */}
-        <a
-          href="#virtuallabs"
-          rel="noopener noreferrer"
+        <Link
+          to="/virtuallabs"
           className="hidden lg:inline-block bg-[#085d90] text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:bg-[#064a73] hover:scale-105 hover:shadow-lg"
         >
           Virtual Labs
-        </a>
+        </Link>
 
         {/* Mobile Menu Button */}
-        <button className="lg:hidden text-2xl" onClick={() => setIsOpen(!isOpen)}>
+        <button
+          className="lg:hidden text-2xl"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Menu"
+        >
           {isOpen ? <FiX /> : <FiMenu />}
         </button>
       </nav>
@@ -108,27 +122,38 @@ const Navbar = () => {
         <ul className="flex flex-col items-center space-y-4 text-gray-700 font-medium">
           {navLinks.map((item, index) => (
             <li key={index} className="relative group">
-              <a
-                href={item.link}
-                target={item.link.startsWith("http") ? "_blank" : "_self"}
-                rel="noopener noreferrer"
-                className="relative text-gray-700 text-sm uppercase transition-colors duration-200"
-              >
-                {item.text}
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              {item.link.startsWith("http") ? (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative text-gray-700 text-sm uppercase transition-colors duration-200"
+                >
+                  {item.text}
+                  <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              ) : (
+                <Link
+                  to={item.link}
+                  className="relative text-gray-700 text-sm uppercase transition-colors duration-200"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.text}
+                  <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              )}
             </li>
           ))}
         </ul>
 
         {/* Virtual Labs Button (Mobile) */}
-        <a
-          href="#virtuallabs"
-          rel="noopener noreferrer"
+        <Link
+          to="/virtuallabs"
           className="bg-[#085d90] text-white w-[70%] mx-auto px-4 py-2 rounded-md text-sm font-medium hover:bg-[#064a73] transition duration-300 block text-center mt-4"
+          onClick={() => setIsOpen(false)}
         >
           Virtual Labs
-        </a>
+        </Link>
       </div>
     </header>
   );

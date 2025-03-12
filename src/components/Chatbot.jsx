@@ -60,7 +60,7 @@ const faqData = [
     },
     { 
       "question": "How can i access the bubble sort experiment?", 
-      "answer": "Click on this link to go to bubble sort experiment: http://localhost:5173/bubble-sort/practice",
+      "answer": "Click on this link to go to bubble sort experiment: http://localhost:5173/exp/bubble-sort/practice",
       "keywords": ["Bubble sort", "sort", "practice bubble sort", "i want to practice bubble sort"]
     },
   

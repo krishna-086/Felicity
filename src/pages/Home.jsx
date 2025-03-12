@@ -22,7 +22,7 @@ const Home = () => {
     <>
     
       <Navbar />
-      <div className="mt-33 sm:mt-29 flex justify-center m-5">
+      <div className="mt-20 sm:mt-29 flex justify-center m-5">
         <ImageCarousel
           images={images}
           autoPlay={true}
@@ -31,7 +31,7 @@ const Home = () => {
         />
       </div>
       <Tabs />
-      <div id="virtuallabs" className="pt-20">
+      <div id="virtuallabs" className="pt-6 sm:pt-15">
         <VirtualLabs />
       </div>
 

@@ -12,6 +12,7 @@ import Course from "./pages/Course";
 import Chatbot from "./components/Chatbot";
 import Bubble from "./pages/BubbleSort";
 import LabPage from "./pages/LabPages";
+import ScrollToTop from "./components/Scrolltotop";
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="w-full min-h-screen">
         <Routes>
           <Route path="/" element={<Home />} />

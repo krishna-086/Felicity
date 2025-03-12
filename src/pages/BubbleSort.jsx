@@ -40,7 +40,9 @@ const Bubble = () => {
       {/* Custom Navbar */}
       <nav className="bg-white  text-gray-700 py-2 shadow-lg fixed top-0 w-full z-50 border-b-4 border-orange-500">
         <div className="max-w-9xl mx-auto px-5 md:px-10  flex justify-between items-center">
-          <img src="/logo.jpg" alt="Logo" className="h-12" />
+          <Link to="/">
+  <img src="/logo.jpg" alt="Logo" className="h-12" />
+</Link>
           <ul className="hidden md:flex items-center space-x-6 text-md uppercase font-medium">
             <li>
               <StarRatingDisplay rating={4.5} />
@@ -52,7 +54,7 @@ const Bubble = () => {
             </li>
             <li>
               <Link
-                to="./practice"
+                to="/exp/bubble-sort/practice"
                 className="border-2 border-[#085d90] text-[#085d90] px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-[#085d90] hover:text-white shadow-lg transform hover:scale-105 animate-pulse"
               >
                 Practice
@@ -62,7 +64,7 @@ const Bubble = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden ml-auto">
           <Link
-                to="./practice"
+                to="/exp/bubble-sort/practice"
                 className="border-2 border-[#085d90] text-[#085d90] px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-[#085d90] hover:text-white shadow-lg transform hover:scale-105 animate-pulse"
               >
                 Practice
@@ -300,7 +302,7 @@ const Bubble = () => {
         >
           <Home size={24} />
         </button>
-        <Link to="./demo">
+        <Link to="/exp/bubble-sort/demo">
   <button
     onClick={() => setSelected("Bubble Sort - Demo")}
     className={
@@ -360,9 +362,9 @@ const Bubble = () => {
     { text: "Aim" },
     { text: "Concept" },
     { text: "Algorithm" },
-    { text: "Demo", link: "./demo" },
-    { text: "Practice", link: "./practice" },
-    { text: "Exercise", link: "./exercise" },
+    { text: "Demo", link: "/exp/bubble-sort/demo" },
+    { text: "Practice", link: "/exp/bubble-sort/practice" },
+    { text: "Exercise", link: "/exp/bubble-sort/exercise" },
     { text: "Quiz" },
   ].map(({ text, link }) => (
     <li

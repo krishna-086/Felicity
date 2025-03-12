@@ -57,17 +57,17 @@ const Sidebar = ({ setSelected, selected }) => {
             Algorithm
           </li>
           <li className={childItemClass("Bubble Sort - Demo", selected)}>
-            <Link to="./demo" className="w-full h-full block">
+            <Link to="/exp/bubble-sort/demo" className="w-full h-full block">
               Demo
             </Link>
           </li>
           <li className={childItemClass("Bubble Sort - Practice", selected)}>
-            <Link to="./practice" className="w-full h-full block">
+            <Link to="/exp/bubble-sort/practice" className="w-full h-full block">
               Practice
             </Link>
           </li>
           <li className={childItemClass("Bubble Sort - Exercise", selected)}>
-            <Link to="./exercise" className="w-full h-full block">
+            <Link to="/exp/bubble-sort/exercise" className="w-full h-full block">
               Exercise
             </Link>
           </li>

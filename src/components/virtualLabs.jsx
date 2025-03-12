@@ -12,7 +12,7 @@ const VirtualLabs = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const visibleLabs = isMobile && !showAll ? labs.slice(0, 4) : labs; // Show 4 by default on mobile
+  const visibleLabs = isMobile && !showAll ? labs.slice(0, 3) : labs; 
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
