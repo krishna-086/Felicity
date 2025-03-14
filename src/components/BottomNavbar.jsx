@@ -3,17 +3,27 @@ import { Link } from "react-router-dom";
 import { Home, BookOpen, List, MoreHorizontal } from "lucide-react"; // Assuming these icons are from lucide-react
 import AccordionItem from "./Accordion"; // Import the Accordion component if needed
 
-const BottomNavbar = ({ setSelected, selected, moreOpen, setMoreOpen, headingItemClass, childItemClass }) => {
+const BottomNavbar = ({
+  setSelected,
+  selected,
+  moreOpen,
+  setMoreOpen,
+  headingItemClass,
+  childItemClass,
+}) => {
   return (
     <>
       {/* bottom navbar */}
       <div className="fixed bottom-0 w-full bg-white shadow-lg border-t-4 border-orange-500 p-4 flex justify-around md:hidden">
         <button
           onClick={() => setSelected("Aim")}
-          className={selected === "Aim" ? "text-[#085d90]" : "text-gray-700"}
+          className={
+            selected === "Aim" ? "text-[#085d90] font-bold" : "text-gray-700 font-bold"
+          }
         >
           <Link to="/exp/bubble-sort/">
-            <Home size={24} />{" "}
+            <img src="/logo/aim.png" alt="Aim" className="w-6 h-6" />
+            <span className="text-xs">Aim</span>
           </Link>
         </button>
 
@@ -21,12 +31,13 @@ const BottomNavbar = ({ setSelected, selected, moreOpen, setMoreOpen, headingIte
           onClick={() => setSelected("BubbleSort-Demo")}
           className={
             selected === "BubbleSort-Demo"
-              ? "text-[#085d90]"
-              : "text-gray-700"
+              ? "text-[#085d90] font-bold"
+              : "text-gray-700 font-bold"
           }
         >
           <Link to="/exp/bubble-sort/demo">
-            <BookOpen size={24} />
+            <img src="/logo/demo.png" alt="Demo" className="w-6 h-6" />
+            <span className="text-xs">Demo</span>
           </Link>
         </button>
 
@@ -34,19 +45,23 @@ const BottomNavbar = ({ setSelected, selected, moreOpen, setMoreOpen, headingIte
           onClick={() => setSelected("BubbleSort-Quiz")}
           className={
             selected === "Bubble Sort - Quiz"
-              ? "text-[#085d90]"
-              : "text-gray-700"
+              ? "text-[#085d90] font-bold"
+              : "text-gray-700 font-bold"
           }
         >
-          <Link
-            to="/exp/bubble-sort?section=BubbleSort-Quiz"
-            className="block"
-          >
-            <List size={24} />
+          <Link to="/exp/bubble-sort?section=BubbleSort-Quiz" className="block">
+            <img src="/logo/quiz.png" alt="Quiz" className="w-6 h-6" />
+            <span className="text-xs">Quiz</span>
           </Link>
         </button>
-        <button onClick={() => setMoreOpen(!moreOpen)} className="text-gray-700">
-          <MoreHorizontal size={24} />
+        <button
+          onClick={() => setMoreOpen(!moreOpen)}
+          className={`${
+            moreOpen ? "text-[#085d90] font-bold" : "text-gray-700 font-bold"
+          }`}
+        >
+          <img src="/logo/more.png" alt="More" className="w-6 h-6" />
+          <span className="text-xs">More</span>
         </button>
       </div>
 
