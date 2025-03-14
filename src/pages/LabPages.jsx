@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { LabCategories } from "../assets/assets";
 import CategorizedLabs from "../components/CategorizedLabs";
 import Navbar from "../components/Navbar";
@@ -23,10 +23,10 @@ const LabPage = () => {
       <Navbar />
       <div className="p-6 sm:p-10 bg-gradient-to-b from-blue-50 to-white mt-20">
         <nav className="text-sm text-gray-500 mb-6">
-          <a href="/" className="hover:text-blue-500 cursor-pointer">
-            Home
-          </a>
-          »<span className="text-blue-500">{selectedCategory.name}</span>
+          <li className="cursor-pointer hover:text-[#085d90]">
+            <Link to="/">Home</Link>
+          </li>
+          » <span className="text-blue-500">{selectedCategory.name}</span>
         </nav>
 
         <div className="flex items-center gap-2 mb-6">

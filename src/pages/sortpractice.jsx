@@ -5,19 +5,18 @@ import { Link } from "react-router-dom";
 import AccordionItem from "../components/Accordion";
 import { BookOpen, Home, List, MoreHorizontal } from "lucide-react";
 
-
 const childItemClass = (itemValue, selected) =>
   `cursor-pointer transition-transform duration-300 text-base px-2 py-1  ${
     selected === itemValue
       ? "text-[#085d90] font-bold" // Already bold when selected
       : "text-gray-700 hover:text-[#064a73] font-normal"
   }`;
-  const headingItemClass = (itemValue, selected) =>
-    `cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase ${
-      selected === itemValue
-        ? "font-bold text-[#085d90]" // Make selected top-level items bold
-        : "font-medium text-gray-700 hover:text-[#064a73]"
-    }`;
+const headingItemClass = (itemValue, selected) =>
+  `cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase ${
+    selected === itemValue
+      ? "font-bold text-[#085d90]" // Make selected top-level items bold
+      : "font-medium text-gray-700 hover:text-[#064a73]"
+  }`;
 const BubbleSortPractice = () => {
   const initialArray = [29, 47, 17, 68, 49]; // Typical array from Virtual Labs
   const [array, setArray] = useState([...initialArray]);
@@ -164,7 +163,10 @@ const BubbleSortPractice = () => {
             <img src="/logo.jpg" alt="Logo" className="h-12" />
           </Link>
           <ul className="hidden md:flex items-center space-x-6 text-md uppercase font-medium">
-            <li className="cursor-pointer hover:text-[#085d90]">Home</li>
+            <li className="cursor-pointer hover:text-[#085d90]">
+              <Link to="/">Home</Link>
+            </li>
+
             <li className="cursor-pointer hover:text-[#085d90]">Rate Me</li>
             <li className="cursor-pointer hover:text-[#085d90]">
               Report a Bug
@@ -409,8 +411,9 @@ const BubbleSortPractice = () => {
           onClick={() => setSelected("Aim")}
           className={selected === "Aim" ? "text-[#085d90]" : "text-gray-700"}
         >
-           <Link to="/exp/bubble-sort/">
-          <Home size={24} /> </Link>
+          <Link to="/exp/bubble-sort/">
+            <Home size={24} />{" "}
+          </Link>
         </button>
         <Link to="/exp/bubble-sort/demo">
           <button

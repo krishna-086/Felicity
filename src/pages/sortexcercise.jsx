@@ -6,19 +6,18 @@ import { Link } from "react-router-dom";
 import AccordionItem from "../components/Accordion";
 import { BookOpen, Home, List, MoreHorizontal } from "lucide-react";
 
-
 const childItemClass = (itemValue, selected) =>
   `cursor-pointer transition-transform duration-300 text-base px-2 py-1  ${
     selected === itemValue
       ? "text-[#085d90] font-bold" // Already bold when selected
       : "text-gray-700 hover:text-[#064a73] font-normal"
   }`;
-  const headingItemClass = (itemValue, selected) =>
-    `cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase ${
-      selected === itemValue
-        ? "font-bold text-[#085d90]" // Make selected top-level items bold
-        : "font-medium text-gray-700 hover:text-[#064a73]"
-    }`;
+const headingItemClass = (itemValue, selected) =>
+  `cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase ${
+    selected === itemValue
+      ? "font-bold text-[#085d90]" // Make selected top-level items bold
+      : "font-medium text-gray-700 hover:text-[#064a73]"
+  }`;
 const BubbleSortExercise = () => {
   const initialArray = [64, 38, 89, 46, 99, 96];
   const [array, setArray] = useState([...initialArray]);
@@ -102,7 +101,10 @@ const BubbleSortExercise = () => {
             <img src="/logo.jpg" alt="Logo" className="h-12" />
           </Link>
           <ul className="hidden md:flex items-center space-x-6 text-md uppercase font-medium">
-            <li className="cursor-pointer hover:text-[#085d90]">Home</li>
+            <li className="cursor-pointer hover:text-[#085d90]">
+              <Link to="/">Home</Link>
+            </li>
+
             <li className="cursor-pointer hover:text-[#085d90]">Rate Me</li>
             <li className="cursor-pointer hover:text-[#085d90]">
               Report a Bug
@@ -128,97 +130,95 @@ const BubbleSortExercise = () => {
         </div>
       </nav>
 
-      
-
       {/* Main Content */}
       <div className="flex  items-center p-6 pt-24">
-      <div class="max-w-[40%] mr-30 bg-white shadow-lg rounded-xl p-4 h-full overflow-y-auto hidden md:block">
-        <ul class="space-y-1">
-          <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
-            Aim
-          </li>
-          <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
-            Overview
-          </li>
-          <div>
-            <div class="flex justify-between items-center py-2 cursor-pointer text-base font-medium uppercase text-gray-700 hover:text-[#064a73] px-2">
-              <span>Bubble Sort</span>
-              <span>
-                <i class="fas fa-chevron-up text-base"></i>
-              </span>
+        <div class="max-w-[40%] mr-30 bg-white shadow-lg rounded-xl p-4 h-full overflow-y-auto hidden md:block">
+          <ul class="space-y-1">
+            <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
+              Aim
+            </li>
+            <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
+              Overview
+            </li>
+            <div>
+              <div class="flex justify-between items-center py-2 cursor-pointer text-base font-medium uppercase text-gray-700 hover:text-[#064a73] px-2">
+                <span>Bubble Sort</span>
+                <span>
+                  <i class="fas fa-chevron-up text-base"></i>
+                </span>
+              </div>
+              <ul class="px-2 space-y-1">
+                <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
+                  Aim
+                </li>
+                <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
+                  Concept
+                </li>
+                <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
+                  Algorithm
+                </li>
+                <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
+                  <a
+                    class="w-full h-full block"
+                    href="/exp/bubble-sort/demo"
+                    data-discover="true"
+                  >
+                    Demo
+                  </a>
+                </li>
+                <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
+                  <a
+                    class="w-full h-full block"
+                    href="/exp/bubble-sort/practice"
+                    data-discover="true"
+                  >
+                    Practice
+                  </a>
+                </li>
+                <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
+                  <a
+                    class="w-full h-full block"
+                    href="/exp/bubble-sort/exercise"
+                    data-discover="true"
+                  >
+                    Exercise
+                  </a>
+                </li>
+                <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-[#085d90] font-bold">
+                  Quiz
+                </li>
+              </ul>
             </div>
-            <ul class="px-2 space-y-1">
-              <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
-                Aim
-              </li>
-              <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
-                Concept
-              </li>
-              <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
-                Algorithm
-              </li>
-              <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
-                <a
-                  class="w-full h-full block"
-                  href="/exp/bubble-sort/demo"
-                  data-discover="true"
-                >
-                  Demo
-                </a>
-              </li>
-              <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
-                <a
-                  class="w-full h-full block"
-                  href="/exp/bubble-sort/practice"
-                  data-discover="true"
-                >
-                  Practice
-                </a>
-              </li>
-              <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
-                <a
-                  class="w-full h-full block"
-                  href="/exp/bubble-sort/exercise"
-                  data-discover="true"
-                >
-                  Exercise
-                </a>
-              </li>
-              <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-[#085d90] font-bold">
-                Quiz
-              </li>
-            </ul>
-          </div>
-          <div>
-            <div class="flex justify-between items-center py-2 cursor-pointer text-base font-medium uppercase text-gray-700 hover:text-[#064a73] px-2">
-              <span>Optimized Bubble Sort</span>
-              <span>
-                <i class="fas fa-chevron-down text-base"></i>
-              </span>
+            <div>
+              <div class="flex justify-between items-center py-2 cursor-pointer text-base font-medium uppercase text-gray-700 hover:text-[#064a73] px-2">
+                <span>Optimized Bubble Sort</span>
+                <span>
+                  <i class="fas fa-chevron-down text-base"></i>
+                </span>
+              </div>
             </div>
-          </div>
-          <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
-            Code Assessment
-          </li>
-          <div>
-            <div class="flex justify-between items-center py-2 cursor-pointer text-base font-medium uppercase text-gray-700 hover:text-[#064a73] px-2">
-              <span>Analysis</span>
-              <span>
-                <i class="fas fa-chevron-down text-base"></i>
-              </span>
+            <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
+              Code Assessment
+            </li>
+            <div>
+              <div class="flex justify-between items-center py-2 cursor-pointer text-base font-medium uppercase text-gray-700 hover:text-[#064a73] px-2">
+                <span>Analysis</span>
+                <span>
+                  <i class="fas fa-chevron-down text-base"></i>
+                </span>
+              </div>
             </div>
-          </div>
-          <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
-            Posttest
-          </li>
-          <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
-            Further Readings/References
-          </li>
-          <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
-            Feedback
-          </li>
-        </ul>
-      </div>
+            <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
+              Posttest
+            </li>
+            <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
+              Further Readings/References
+            </li>
+            <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
+              Feedback
+            </li>
+          </ul>
+        </div>
         <div className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 w-full max-w-3xl text-center">
           <h1 className="text-2xl sm:text-3xl font-bold text-blue-800 mb-20">
             Bubble Sort Exercise
@@ -285,7 +285,8 @@ const BubbleSortExercise = () => {
           className={selected === "Aim" ? "text-[#085d90]" : "text-gray-700"}
         >
           <Link to="/exp/bubble-sort/">
-                   <Home size={24} /> </Link>
+            <Home size={24} />{" "}
+          </Link>
         </button>
         <Link to="/exp/bubble-sort/demo">
           <button

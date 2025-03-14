@@ -41,13 +41,16 @@ const Bubble = () => {
       <nav className="bg-white  text-gray-700 py-2 shadow-lg fixed top-0 w-full z-50 border-b-4 border-orange-500">
         <div className="max-w-9xl mx-auto px-5 md:px-10  flex justify-between items-center">
           <Link to="/">
-  <img src="/logo.jpg" alt="Logo" className="h-12" />
-</Link>
+            <img src="/logo.jpg" alt="Logo" className="h-12" />
+          </Link>
           <ul className="hidden md:flex items-center space-x-6 text-md uppercase font-medium">
             <li>
               <StarRatingDisplay rating={4.5} />
             </li>
-            <li className="cursor-pointer hover:text-[#085d90]">Home</li>
+            <li className="cursor-pointer hover:text-[#085d90]">
+              <Link to="/">Home</Link>
+            </li>
+
             <li className="cursor-pointer hover:text-[#085d90]">Rate Me</li>
             <li className="cursor-pointer hover:text-[#085d90]">
               Report a Bug
@@ -63,12 +66,12 @@ const Bubble = () => {
           </ul>
           {/* Mobile Menu Button */}
           <div className="md:hidden ml-auto">
-          <Link
-                to="/exp/bubble-sort/practice"
-                className="border-2 border-[#085d90] text-[#085d90] px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-[#085d90] hover:text-white shadow-lg transform hover:scale-105 animate-pulse"
-              >
-                Practice
-              </Link>
+            <Link
+              to="/exp/bubble-sort/practice"
+              className="border-2 border-[#085d90] text-[#085d90] px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-[#085d90] hover:text-white shadow-lg transform hover:scale-105 animate-pulse"
+            >
+              Practice
+            </Link>
           </div>
           {/* Mobile Menu Dropdown */}
           {/* {menuOpen && (
@@ -303,17 +306,17 @@ const Bubble = () => {
           <Home size={24} />
         </button>
         <Link to="/exp/bubble-sort/demo">
-  <button
-    onClick={() => setSelected("Bubble Sort - Demo")}
-    className={
-      selected === "Bubble Sort - Demo"
-        ? "text-[#085d90]"
-        : "text-gray-700"
-    }
-  >
-    <BookOpen size={24} />
-  </button>
-</Link>
+          <button
+            onClick={() => setSelected("Bubble Sort - Demo")}
+            className={
+              selected === "Bubble Sort - Demo"
+                ? "text-[#085d90]"
+                : "text-gray-700"
+            }
+          >
+            <BookOpen size={24} />
+          </button>
+        </Link>
         <button
           onClick={() => setSelected("Bubble Sort - Quiz")}
           className={
@@ -358,33 +361,36 @@ const Bubble = () => {
 
               {/* Bubble Sort Accordion */}
               <AccordionItem title="Bubble Sort">
-  {[
-    { text: "Aim" },
-    { text: "Concept" },
-    { text: "Algorithm" },
-    { text: "Demo", link: "/exp/bubble-sort/demo" },
-    { text: "Practice", link: "/exp/bubble-sort/practice" },
-    { text: "Exercise", link: "/exp/bubble-sort/exercise" },
-    { text: "Quiz" },
-  ].map(({ text, link }) => (
-    <li
-      key={text}
-      className={childItemClass(`Bubble Sort - ${text}`, selected)}
-      onClick={() => {
-        setSelected(`Bubble Sort - ${text}`);
-        setMoreOpen(false);
-      }}
-    >
-      {link ? (
-        <Link to={link} className="w-full h-full block">
-          {text}
-        </Link>
-      ) : (
-        text
-      )}
-    </li>
-  ))}
-</AccordionItem>
+                {[
+                  { text: "Aim" },
+                  { text: "Concept" },
+                  { text: "Algorithm" },
+                  { text: "Demo", link: "/exp/bubble-sort/demo" },
+                  { text: "Practice", link: "/exp/bubble-sort/practice" },
+                  { text: "Exercise", link: "/exp/bubble-sort/exercise" },
+                  { text: "Quiz" },
+                ].map(({ text, link }) => (
+                  <li
+                    key={text}
+                    className={childItemClass(
+                      `Bubble Sort - ${text}`,
+                      selected
+                    )}
+                    onClick={() => {
+                      setSelected(`Bubble Sort - ${text}`);
+                      setMoreOpen(false);
+                    }}
+                  >
+                    {link ? (
+                      <Link to={link} className="w-full h-full block">
+                        {text}
+                      </Link>
+                    ) : (
+                      text
+                    )}
+                  </li>
+                ))}
+              </AccordionItem>
 
               {/* Optimized Bubble Sort Accordion */}
               <AccordionItem title="Optimized Bubble Sort">

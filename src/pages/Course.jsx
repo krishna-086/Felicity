@@ -29,9 +29,15 @@ const Course = () => {
             <li>
               <StarRatingDisplay rating={4.5} />
             </li>
-            <li className="cursor-pointer hover:text-[#085d90]">Home</li>
-            <li className="cursor-pointer hover:text-[#085d90]">About Us</li>
-            <li className="cursor-pointer hover:text-[#085d90]">Contact Us</li>
+            <li className="cursor-pointer hover:text-[#085d90]">
+  <Link to="/">Home</Link>
+</li>
+<li className="cursor-pointer hover:text-[#085d90]">
+  <Link to="/about-us">About Us</Link>
+</li>
+<li className="cursor-pointer hover:text-[#085d90]">
+  <Link to="/contact-us">Contact Us</Link>
+</li>
           </ul>
           {/* Mobile Menu Button */}
           <div className="md:hidden">
@@ -44,11 +50,15 @@ const Course = () => {
         {menuOpen && (
           <div className="md:hidden absolute top-16 right-0 bg-white shadow-lg w-48 rounded-lg p-4">
             <ul className="space-y-4 text-lg">
-              <li className="cursor-pointer hover:text-[#085d90]">Home</li>
-              <li className="cursor-pointer hover:text-[#085d90]">About Us</li>
-              <li className="cursor-pointer hover:text-[#085d90]">
-                Contact Us
-              </li>
+            <li className="cursor-pointer hover:text-[#085d90]">
+  <Link to="/">Home</Link>
+</li>
+<li className="cursor-pointer hover:text-[#085d90]">
+  <Link to="/about-us">About Us</Link>
+</li>
+<li className="cursor-pointer hover:text-[#085d90]">
+  <Link to="/contact-us">Contact Us</Link>
+</li>
             </ul>
           </div>
         )}

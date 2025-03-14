@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FiMenu, FiSearch, FiX } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const searchRef = useRef(null);
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const navLinks = [
     { text: "Home", link: "/" },
@@ -28,11 +32,41 @@ const Navbar = () => {
     };
   }, []);
 
+  // Function to handle Virtual Labs button click
+  const handleVirtualLabsClick = (e) => {
+    e.preventDefault();
+
+    if (location.pathname !== "/") {
+      navigate("/"); // Navigate to homepage first
+      setTimeout(() => {
+        const target = document.getElementById("virtuallabs");
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 500); // Delay to ensure the page has loaded
+    } else {
+      const target = document.getElementById("virtuallabs");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
-    <header className="fixed top-0 w-full bg-white shadow-md z-50 px-5 animate-[slideIn_0.6s_ease-out]">
+    <motion.header
+      className="fixed top-0 w-full bg-white shadow-md z-50 px-5"
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <nav className="container mx-auto flex items-center justify-between px-2 py-4">
         {/* Logo & Title */}
-        <div className="flex items-center space-x-3">
+        <motion.div
+          className="flex items-center space-x-3"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           <Link to="/">
             <img src="/logo.jpg" alt="Logo" className="h-10 sm:h-14" />
           </Link>
@@ -47,32 +81,40 @@ const Navbar = () => {
               </span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Navigation Links (Desktop) */}
-        <ul className="hidden lg:flex space-x-6 text-gray-700 font-medium">
+        <ul className="hidden lg:flex space-x-3 text-gray-700 font-medium">
           {navLinks.map((item, index) => (
-            <li key={index} className="relative group">
+            <motion.li
+              key={index}
+              className="relative group transition-all"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
               {item.link.startsWith("http") ? (
                 <a
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative text-gray-700 text-md uppercase transition-colors duration-200"
+                  onClick={() => setIsOpen(false)}
+                  className="relative text-gray-700 text-md uppercase px-3 py-2 transition-all duration-300"
                 >
                   {item.text}
-                  <span className="absolute left-0 -bottom-[5px] w-0 h-[3px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
               ) : (
                 <Link
                   to={item.link}
-                  className="relative text-gray-700 text-md uppercase transition-colors duration-200"
+                  onClick={() => setIsOpen(false)}
+                  className="relative text-gray-700 text-md uppercase px-3 py-2 transition-all duration-300"
                 >
                   {item.text}
-                  <span className="absolute left-0 -bottom-[5px] w-0 h-[3px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </Link>
               )}
-            </li>
+            </motion.li>
           ))}
         </ul>
 
@@ -96,12 +138,15 @@ const Navbar = () => {
         </div>
 
         {/* Virtual Labs Button (Desktop) */}
-        <Link
-          to="/virtuallabs"
+        <motion.button
+          onClick={handleVirtualLabsClick}
           className="hidden lg:inline-block bg-[#085d90] text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:bg-[#064a73] hover:scale-105 hover:shadow-lg"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
         >
           Virtual Labs
-        </Link>
+        </motion.button>
 
         {/* Mobile Menu Button */}
         <button
@@ -114,10 +159,13 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Menu */}
-      <div
-        className={`lg:hidden transition-all duration-500 ease-out bg-white shadow-md ${
+      <motion.div
+        className={`lg:hidden flex flex-col items-center  transition-all duration-500 ease-out bg-white  ${
           isOpen ? "max-h-screen opacity-100 py-4" : "max-h-0 opacity-0 overflow-hidden"
         }`}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : -10 }}
+        transition={{ duration: 0.3 }}
       >
         <ul className="flex flex-col items-center space-y-4 text-gray-700 font-medium">
           {navLinks.map((item, index) => (
@@ -127,35 +175,41 @@ const Navbar = () => {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative text-gray-700 text-sm uppercase transition-colors duration-200"
+                  onClick={() => setIsOpen(false)}
+                  className="relative text-gray-700 text-sm uppercase px-4 py-2 transition-all duration-300"
                 >
                   {item.text}
-                  <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
               ) : (
                 <Link
                   to={item.link}
-                  className="relative text-gray-700 text-sm uppercase transition-colors duration-200"
+                  className="relative text-gray-700 text-sm uppercase px-4 py-2 transition-all duration-300"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.text}
-                  <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </Link>
+                
+                
               )}
             </li>
           ))}
-        </ul>
 
-        {/* Virtual Labs Button (Mobile) */}
-        <Link
-          to="/virtuallabs"
-          className="bg-[#085d90] text-white w-[70%] mx-auto px-4 py-2 rounded-md text-sm font-medium hover:bg-[#064a73] transition duration-300 block text-center mt-4"
-          onClick={() => setIsOpen(false)}
+        </ul>
+        <motion.button
+          onClick={handleVirtualLabsClick}
+          className="mt-4 lg:hidden bg-[#085d90] text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:bg-[#064a73] hover:scale-105 hover:shadow-lg"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
         >
           Virtual Labs
-        </Link>
-      </div>
-    </header>
+        </motion.button>
+        
+      </motion.div>
+      
+    </motion.header>
   );
 };
 
