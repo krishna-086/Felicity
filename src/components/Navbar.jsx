@@ -70,12 +70,12 @@ const Navbar = () => {
           <Link to="/">
             <img src="/logo.jpg" alt="Logo" className="h-10 sm:h-14" />
           </Link>
-          <div className="hidden sm:block text-xs sm:text-sm md:text-base">
+          <div className="hidden  sm:block text-[8px] sm:text-sm md:text-base md:text-[14px]">
             <div className="font-semibold">An Initiative of</div>
             <div className="font-semibold">
               Ministry of Education
               <br />
-              <span className="font-normal">
+              <span className="font-normal ">
                 Under the National Mission on Education through{" "}
                 <span className="text-red-500">ICT</span>
               </span>
@@ -119,7 +119,7 @@ const Navbar = () => {
         </ul>
 
         {/* Search (Hidden on Mobile) */}
-        <div className="relative hidden md:flex items-center" ref={searchRef}>
+        {/* <div className="relative hidden md:flex items-center" ref={searchRef}>
           <input
             type="text"
             placeholder="Search..."
@@ -135,7 +135,7 @@ const Navbar = () => {
           >
             <FiSearch className="text-lg" />
           </button>
-        </div>
+        </div> */}
 
         {/* Virtual Labs Button (Desktop) */}
         <motion.button

@@ -1,3 +1,4 @@
+import Footer from "../components/footer";
 import Navbar from "../components/Navbar"
 
 export default function ContactPage() {
@@ -5,7 +6,7 @@ export default function ContactPage() {
       <>
       <Navbar />
       <div className="flex flex-col items-center justify-center min-h-screen bg-white mt-15 ">
-        <div className=" w-full  rounded-2xl shadow-lg px-4 p-6 md:p-10">
+        <div className=" w-full m-10 rounded-2xl shadow-lg px-4 p-6 md:p-10">
           <h1 className="text-3xl font-semibold text-gray-900 text-center mb-6">
             Contact Us
           </h1>
@@ -45,6 +46,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+      <Footer/>
       </>
     );
   }
