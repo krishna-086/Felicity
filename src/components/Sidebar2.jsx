@@ -1,9 +1,8 @@
 import React from "react";
 import AccordionItem from "./Accordion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 // Helper for non-accordion items (top-level): capitalized, medium weight.
-// Helper for non-accordion items (top-level): capitalized, bold when selected.
 const headingItemClass = (itemValue, selected) =>
   `cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase ${
     selected === itemValue
@@ -19,7 +18,13 @@ const childItemClass = (itemValue, selected) =>
       : "text-gray-700 hover:text-[#064a73] font-normal"
   }`;
 
-const Sidebar = ({ setSelected, selected }) => {
+const Sidebar2 = ({ setSelected, selected }) => {
+  const location = useLocation();
+
+  const getSectionUrl = (section) => {
+    return `/exp/bubble-sort?section=${section}`;
+  };
+
   return (
     <div className="w-1/3 bg-white shadow-lg rounded-xl p-4 h-full overflow-y-auto hidden md:block">
       <ul className="space-y-1">
@@ -28,33 +33,44 @@ const Sidebar = ({ setSelected, selected }) => {
           className={headingItemClass("Aim", selected)}
           onClick={() => setSelected("Aim")}
         >
-          Aim
+          <Link to={getSectionUrl("Aim")} className="w-full h-full block">
+              Aim
+            </Link>
         </li>
         <li
           className={headingItemClass("Overview", selected)}
           onClick={() => setSelected("Overview")}
         >
-          Overview
+          <Link to={getSectionUrl("Overview")} className="w-full h-full block">
+              Overview
+            </Link>
         </li>
+
         {/* Bubble Sort Section */}
         <AccordionItem title="Bubble Sort">
           <li
             className={childItemClass("BubbleSort-Aim", selected)}
             onClick={() => setSelected("BubbleSort-Aim")}
           >
-            Aim
+            <Link to={getSectionUrl("BubbleSort-Aim")} className="w-full h-full block">
+              Aim
+            </Link>
           </li>
           <li
             className={childItemClass("BubbleSort-Concept", selected)}
             onClick={() => setSelected("BubbleSort-Concept")}
           >
-            Concept
+            <Link to={getSectionUrl("BubbleSort-Concept")} className="w-full h-full block">
+              Concept
+            </Link>
           </li>
           <li
             className={childItemClass("BubbleSort-Algorithm", selected)}
             onClick={() => setSelected("BubbleSort-Algorithm")}
           >
-            Algorithm
+            <Link to={getSectionUrl("BubbleSort-Algorithm")} className="w-full h-full block">
+              Algorithm
+            </Link>
           </li>
           <li className={childItemClass("BubbleSort-Demo", selected)}>
             <Link to="/exp/bubble-sort/demo" className="w-full h-full block">
@@ -75,7 +91,9 @@ const Sidebar = ({ setSelected, selected }) => {
             className={childItemClass("BubbleSort-Quiz", selected)}
             onClick={() => setSelected("BubbleSort-Quiz")}
           >
-            Quiz
+            <Link to={getSectionUrl("BubbleSort-Quiz")} className="w-full h-full block">
+              Quiz
+            </Link>
           </li>
         </AccordionItem>
 
@@ -85,7 +103,9 @@ const Sidebar = ({ setSelected, selected }) => {
             className={childItemClass("OptimizedBubbleSort-Aim", selected)}
             onClick={() => setSelected("OptimizedBubbleSort-Aim")}
           >
-            Aim
+            <Link to={getSectionUrl("OptimizedBubbleSort-Aim")} className="w-full h-full block">
+              Aim
+            </Link>
           </li>
           <li
             className={childItemClass(
@@ -96,13 +116,23 @@ const Sidebar = ({ setSelected, selected }) => {
               setSelected("OptimizedBubbleSort-OptimizationTechnique")
             }
           >
-            Optimization Technique
+            <Link
+              to={getSectionUrl("OptimizedBubbleSort-OptimizationTechnique")}
+              className="w-full h-full block"
+            >
+              Optimization Technique
+            </Link>
           </li>
           <li
             className={childItemClass("OptimizedBubbleSort-Demo", selected)}
             onClick={() => setSelected("OptimizedBubbleSort-Demo")}
           >
-            Demo
+            <Link
+              to={getSectionUrl("OptimizedBubbleSort-Demo")}
+              className="w-full h-full block"
+            >
+              Demo
+            </Link>
           </li>
           <li
             className={childItemClass(
@@ -111,7 +141,12 @@ const Sidebar = ({ setSelected, selected }) => {
             )}
             onClick={() => setSelected("OptimizedBubbleSort-Practice")}
           >
-            Practice
+            <Link
+              to={getSectionUrl("OptimizedBubbleSort-Practice")}
+              className="w-full h-full block"
+            >
+              Practice
+            </Link>
           </li>
           <li
             className={childItemClass(
@@ -120,13 +155,23 @@ const Sidebar = ({ setSelected, selected }) => {
             )}
             onClick={() => setSelected("OptimizedBubbleSort-Exercise")}
           >
-            Exercise
+            <Link
+              to={getSectionUrl("OptimizedBubbleSort-Exercise")}
+              className="w-full h-full block"
+            >
+              Exercise
+            </Link>
           </li>
           <li
             className={childItemClass("OptimizedBubbleSort-Quiz", selected)}
             onClick={() => setSelected("OptimizedBubbleSort-Quiz")}
           >
-            Quiz
+            <Link
+              to={getSectionUrl("OptimizedBubbleSort-Quiz")}
+              className="w-full h-full block"
+            >
+              Quiz
+            </Link>
           </li>
         </AccordionItem>
 
@@ -144,13 +189,17 @@ const Sidebar = ({ setSelected, selected }) => {
             className={childItemClass("Analysis-Aim", selected)}
             onClick={() => setSelected("Analysis-Aim")}
           >
-            Aim
+            <Link to={getSectionUrl("Analysis-Aim")} className="w-full h-full block">
+              Aim
+            </Link>
           </li>
           <li
             className={childItemClass("Analysis-Overview", selected)}
             onClick={() => setSelected("Analysis-Overview")}
           >
-            Overview
+            <Link to={getSectionUrl("Analysis-Overview")} className="w-full h-full block">
+              Overview
+            </Link>
           </li>
           <li
             className={childItemClass(
@@ -159,7 +208,12 @@ const Sidebar = ({ setSelected, selected }) => {
             )}
             onClick={() => setSelected("Analysis-TimeandSpaceComplexity")}
           >
-            Time and Space Complexity
+            <Link
+              to={getSectionUrl("Analysis-TimeandSpaceComplexity")}
+              className="w-full h-full block"
+            >
+              Time and Space Complexity
+            </Link>
           </li>
           <li
             className={childItemClass(
@@ -170,7 +224,12 @@ const Sidebar = ({ setSelected, selected }) => {
               setSelected("Analysis-TimeandSpaceComplexityDemo")
             }
           >
-            Time and Space Complexity Demo
+            <Link
+              to={getSectionUrl("Analysis-TimeandSpaceComplexityDemo")}
+              className="w-full h-full block"
+            >
+              Time and Space Complexity Demo
+            </Link>
           </li>
           <li
             className={childItemClass(
@@ -179,7 +238,12 @@ const Sidebar = ({ setSelected, selected }) => {
             )}
             onClick={() => setSelected("Analysis-StabilityofBubbleSort")}
           >
-            Stability of Bubble Sort
+            <Link
+              to={getSectionUrl("Analysis-StabilityofBubbleSort")}
+              className="w-full h-full block"
+            >
+              Stability of Bubble Sort
+            </Link>
           </li>
           <li
             className={childItemClass(
@@ -190,13 +254,20 @@ const Sidebar = ({ setSelected, selected }) => {
               setSelected("Analysis-ComparisonWithOtherAlgorithms")
             }
           >
-            Comparison with other Algorithms
+            <Link
+              to={getSectionUrl("Analysis-ComparisonWithOtherAlgorithms")}
+              className="w-full h-full block"
+            >
+              Comparison with other Algorithms
+            </Link>
           </li>
           <li
             className={childItemClass("Analysis-Quiz", selected)}
             onClick={() => setSelected("Analysis-Quiz")}
           >
-            Quiz
+            <Link to={getSectionUrl("Analysis-Quiz")} className="w-full h-full block">
+              Quiz
+            </Link>
           </li>
         </AccordionItem>
 
@@ -208,20 +279,20 @@ const Sidebar = ({ setSelected, selected }) => {
           Posttest
         </li>
         <li
-          className={headingItemClass("FurtherReadingsReferences", selected)}
-          onClick={() => setSelected("FurtherReadingsReferences")}
+          className={headingItemClass("Conclusion", selected)}
+          onClick={() => setSelected("Conclusion")}
         >
-          Further Readings/References
+          Conclusion
         </li>
         <li
-          className={headingItemClass("Feedback", selected)}
-          onClick={() => setSelected("Feedback")}
+          className={headingItemClass("References", selected)}
+          onClick={() => setSelected("References")}
         >
-          Feedback
+          References
         </li>
       </ul>
     </div>
   );
 };
 
-export default Sidebar;
+export default Sidebar2;

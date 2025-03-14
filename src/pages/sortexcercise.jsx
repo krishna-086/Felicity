@@ -5,6 +5,8 @@ import { AiOutlineUndo, AiOutlineReload } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import AccordionItem from "../components/Accordion";
 import { BookOpen, Home, List, MoreHorizontal } from "lucide-react";
+import BottomNavbar from "../components/BottomNavbar";
+import Sidebar2 from "../components/Sidebar2";
 
 const childItemClass = (itemValue, selected) =>
   `cursor-pointer transition-transform duration-300 text-base px-2 py-1  ${
@@ -131,94 +133,13 @@ const BubbleSortExercise = () => {
       </nav>
 
       {/* Main Content */}
-      <div className="flex  items-center p-6 pt-24">
-        <div class="max-w-[40%] mr-30 bg-white shadow-lg rounded-xl p-4 h-full overflow-y-auto hidden md:block">
-          <ul class="space-y-1">
-            <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
-              Aim
-            </li>
-            <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
-              Overview
-            </li>
-            <div>
-              <div class="flex justify-between items-center py-2 cursor-pointer text-base font-medium uppercase text-gray-700 hover:text-[#064a73] px-2">
-                <span>Bubble Sort</span>
-                <span>
-                  <i class="fas fa-chevron-up text-base"></i>
-                </span>
-              </div>
-              <ul class="px-2 space-y-1">
-                <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
-                  Aim
-                </li>
-                <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
-                  Concept
-                </li>
-                <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
-                  Algorithm
-                </li>
-                <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
-                  <a
-                    class="w-full h-full block"
-                    href="/exp/bubble-sort/demo"
-                    data-discover="true"
-                  >
-                    Demo
-                  </a>
-                </li>
-                <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
-                  <a
-                    class="w-full h-full block"
-                    href="/exp/bubble-sort/practice"
-                    data-discover="true"
-                  >
-                    Practice
-                  </a>
-                </li>
-                <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-gray-700 hover:text-[#064a73] font-normal">
-                  <a
-                    class="w-full h-full block"
-                    href="/exp/bubble-sort/exercise"
-                    data-discover="true"
-                  >
-                    Exercise
-                  </a>
-                </li>
-                <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1  text-[#085d90] font-bold">
-                  Quiz
-                </li>
-              </ul>
-            </div>
-            <div>
-              <div class="flex justify-between items-center py-2 cursor-pointer text-base font-medium uppercase text-gray-700 hover:text-[#064a73] px-2">
-                <span>Optimized Bubble Sort</span>
-                <span>
-                  <i class="fas fa-chevron-down text-base"></i>
-                </span>
-              </div>
-            </div>
-            <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
-              Code Assessment
-            </li>
-            <div>
-              <div class="flex justify-between items-center py-2 cursor-pointer text-base font-medium uppercase text-gray-700 hover:text-[#064a73] px-2">
-                <span>Analysis</span>
-                <span>
-                  <i class="fas fa-chevron-down text-base"></i>
-                </span>
-              </div>
-            </div>
-            <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
-              Posttest
-            </li>
-            <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
-              Further Readings/References
-            </li>
-            <li class="cursor-pointer transition-transform duration-300 text-base px-2 py-1 uppercase font-medium text-gray-700 hover:text-[#064a73]">
-              Feedback
-            </li>
-          </ul>
-        </div>
+      <div className="min-h-screen bg-white md:bg-gray-100 py-8 px-4 md:p-8 flex flex-col mt-12">
+        <div
+          className="w-full max-w-7xl flex gap-8"
+          style={{ height: "calc(100vh - 4rem)" }}
+        >
+          {/* Sidebar */}
+          <Sidebar2 setSelected={setSelected} selected={selected} />
         <div className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 w-full max-w-3xl text-center">
           <h1 className="text-2xl sm:text-3xl font-bold text-blue-800 mb-20">
             Bubble Sort Exercise
@@ -279,147 +200,15 @@ const BubbleSortExercise = () => {
           </button>
         </div>
       </div>
-      <div className="fixed bottom-0 w-full bg-white shadow-lg border-t-4 border-orange-500 p-4 flex justify-around md:hidden">
-        <button
-          onClick={() => setSelected("Aim")}
-          className={selected === "Aim" ? "text-[#085d90]" : "text-gray-700"}
-        >
-          <Link to="/exp/bubble-sort/">
-            <Home size={24} />{" "}
-          </Link>
-        </button>
-        <Link to="/exp/bubble-sort/demo">
-          <button
-            onClick={() => setSelected("Bubble Sort - Demo")}
-            className={
-              selected === "Bubble Sort - Demo"
-                ? "text-[#085d90]"
-                : "text-gray-700"
-            }
-          >
-            <BookOpen size={24} />
-          </button>
-        </Link>
-        <button
-          onClick={() => setSelected("Bubble Sort - Quiz")}
-          className={
-            selected === "Bubble Sort - Quiz"
-              ? "text-[#085d90]"
-              : "text-gray-700"
-          }
-        >
-          <List size={24} />
-        </button>
-        <button
-          onClick={() => setMoreOpen(!moreOpen)}
-          className="text-gray-700"
-        >
-          <MoreHorizontal size={24} />
-        </button>
       </div>
-      {/* More Options */}
-      {moreOpen && (
-        <div className="fixed bottom-16 left-0 right-0 bg-white shadow-lg border-t border-gray-300 p-4 md:hidden">
-          <div className="w-full max-h-[70vh] overflow-y-auto">
-            <ul className="space-y-2">
-              {/* General Section */}
-              <li
-                className={headingItemClass("Aim", selected)}
-                onClick={() => {
-                  setSelected("Aim");
-                  setMoreOpen(false);
-                }}
-              >
-                Aim
-              </li>
-              <li
-                className={headingItemClass("Overview", selected)}
-                onClick={() => {
-                  setSelected("Overview");
-                  setMoreOpen(false);
-                }}
-              >
-                Overview
-              </li>
-
-              {/* Bubble Sort Accordion */}
-              <AccordionItem title="Bubble Sort">
-                {[
-                  { text: "Aim" },
-                  { text: "Concept" },
-                  { text: "Algorithm" },
-                  { text: "Demo", link: "/exp/bubble-sort/demo" },
-                  { text: "Practice", link: "/exp/bubble-sort/practice" },
-                  { text: "Exercise", link: "/exp/bubble-sort/exercise" },
-                  { text: "Quiz" },
-                ].map(({ text, link }) => (
-                  <li
-                    key={text}
-                    className={childItemClass(
-                      `Bubble Sort - ${text}`,
-                      selected
-                    )}
-                    onClick={() => {
-                      setSelected(`Bubble Sort - ${text}`);
-                      setMoreOpen(false);
-                    }}
-                  >
-                    {link ? (
-                      <Link to={link} className="w-full h-full block">
-                        {text}
-                      </Link>
-                    ) : (
-                      text
-                    )}
-                  </li>
-                ))}
-              </AccordionItem>
-
-              {/* Optimized Bubble Sort Accordion */}
-              <AccordionItem title="Optimized Bubble Sort">
-                {[
-                  "Optimized Bubble Sort - Aim",
-                  "Optimized Bubble Sort - Optimization Technique",
-                  "Optimized Bubble Sort - Demo",
-                  "Optimized Bubble Sort - Practice",
-                  "Optimized Bubble Sort - Exercise",
-                  "Optimized Bubble Sort - Quiz",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className={childItemClass(item, selected)}
-                    onClick={() => {
-                      setSelected(item);
-                      setMoreOpen(false);
-                    }}
-                  >
-                    {item.split("- ")[1]}
-                  </li>
-                ))}
-              </AccordionItem>
-
-              {/* Other Items */}
-              {[
-                "Code Assessment",
-                "Posttest",
-                "Further Readings/References",
-                "Feedback",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className={headingItemClass(item, selected)}
-                  onClick={() => {
-                    setSelected(item);
-                    setMoreOpen(false);
-                  }}
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
+      <BottomNavbar
+        setSelected={setSelected}
+        selected={selected}
+        moreOpen={moreOpen}
+        setMoreOpen={setMoreOpen}
+        headingItemClass={headingItemClass}
+        childItemClass={childItemClass}
+      />
     </div>
   );
 };

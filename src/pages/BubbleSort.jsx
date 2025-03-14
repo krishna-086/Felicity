@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Footer from "../components/footer";
 import StarRatingDisplay from "../components/starDisplay";
 import Sidebar from "../components/Sidebar";
@@ -34,6 +35,13 @@ const Bubble = () => {
   const [selected, setSelected] = useState("Aim");
   const [menuOpen, setMenuOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const section = params.get("section") || "Aim";
+    if (section) {
+      setSelected(section);
+    }
+  }, [location.search]);
 
   return (
     <>
@@ -262,7 +270,7 @@ const Bubble = () => {
                 </div>
               </div>
             )}
-            {selected === "Bubble Sort - Aim" && (
+            {selected === "BubbleSort-Aim" && (
               <div className="content">
                 <h2 className="text-xl md:text-2xl font-bold mb-4">
                   Estimated Time
@@ -283,7 +291,7 @@ const Bubble = () => {
                 </ul>
               </div>
             )}
-            {selected === "Bubble Sort - Quiz" && (
+            {selected === "BubbleSort-Quiz" && (
               <div className="content">
                 <h2 className="text-2xl md:text-3xl font-bold text-center">
                   Quiz Section
@@ -305,27 +313,27 @@ const Bubble = () => {
         >
           <Home size={24} />
         </button>
-        <Link to="/exp/bubble-sort/demo">
-          <button
-            onClick={() => setSelected("Bubble Sort - Demo")}
-            className={
-              selected === "Bubble Sort - Demo"
-                ? "text-[#085d90]"
-                : "text-gray-700"
-            }
-          >
-            <BookOpen size={24} />
-          </button>
-        </Link>
+
         <button
-          onClick={() => setSelected("Bubble Sort - Quiz")}
+          onClick={() => setSelected("BubbleSort-Demo")}
           className={
-            selected === "Bubble Sort - Quiz"
-              ? "text-[#085d90]"
-              : "text-gray-700"
+            selected === "BubbleSort-Demo" ? "text-[#085d90]" : "text-gray-700"
           }
         >
-          <List size={24} />
+          <Link to="/exp/bubble-sort/demo">
+            <BookOpen size={24} />
+          </Link>
+        </button>
+
+        <button
+          onClick={() => setSelected("BubbleSort-Quiz")}
+          className={
+            selected === "BubbleSort-Quiz" ? "text-[#085d90]" : "text-gray-700"
+          }
+        >
+          <Link to="/exp/bubble-sort?section=BubbleSort-Quiz" className="block">
+            <List size={24} />
+          </Link>
         </button>
         <button
           onClick={() => setMoreOpen(!moreOpen)}
@@ -372,12 +380,9 @@ const Bubble = () => {
                 ].map(({ text, link }) => (
                   <li
                     key={text}
-                    className={childItemClass(
-                      `Bubble Sort - ${text}`,
-                      selected
-                    )}
+                    className={childItemClass(`BubbleSort-${text}`, selected)}
                     onClick={() => {
-                      setSelected(`Bubble Sort - ${text}`);
+                      setSelected(`BubbleSort-${text}`);
                       setMoreOpen(false);
                     }}
                   >
@@ -395,12 +400,12 @@ const Bubble = () => {
               {/* Optimized Bubble Sort Accordion */}
               <AccordionItem title="Optimized Bubble Sort">
                 {[
-                  "Optimized Bubble Sort - Aim",
-                  "Optimized Bubble Sort - Optimization Technique",
-                  "Optimized Bubble Sort - Demo",
-                  "Optimized Bubble Sort - Practice",
-                  "Optimized Bubble Sort - Exercise",
-                  "Optimized Bubble Sort - Quiz",
+                  "OptimizedBubbleSort-Aim",
+                  "OptimizedBubbleSort-Optimization Technique",
+                  "OptimizedBubbleSort-Demo",
+                  "OptimizedBubbleSort-Practice",
+                  "OptimizedBubbleSort-Exercise",
+                  "OptimizedBubbleSort-Quiz",
                 ].map((item) => (
                   <li
                     key={item}
@@ -410,16 +415,16 @@ const Bubble = () => {
                       setMoreOpen(false);
                     }}
                   >
-                    {item.split("- ")[1]}
+                    {item.split("-")[1]}
                   </li>
                 ))}
               </AccordionItem>
 
               {/* Other Items */}
               {[
-                "Code Assessment",
+                "CodeAssessment",
                 "Posttest",
-                "Further Readings/References",
+                "FurtherReadingsReferences",
                 "Feedback",
               ].map((item) => (
                 <li
