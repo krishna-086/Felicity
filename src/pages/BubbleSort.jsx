@@ -306,6 +306,7 @@ const Bubble = () => {
         </div>
       </div>
       {/* Bottom Navbar for Mobile */}
+
       <div className="fixed bottom-0 w-full bg-white shadow-lg border-t-4 border-orange-500 p-4 flex justify-around md:hidden">
         <button
           onClick={() => setSelected("Aim")}
@@ -366,6 +367,8 @@ const Bubble = () => {
               >
                 Overview
               </li>
+
+
 
               {/* Bubble Sort Accordion */}
               <AccordionItem title="Bubble Sort">
@@ -442,6 +445,7 @@ const Bubble = () => {
           </div>
         </div>
       )}
+
       <Footer />
     </>
   );
