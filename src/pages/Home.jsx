@@ -9,7 +9,7 @@ import Navbar from "../components/Navbar"
 
 import Tabs from "../components/tab";
 import VirtualLabs from "../components/VirtualLabs";
-import ImageCarousel from "../components/ImageCarasouel";
+import ImageCarousel from "../components/imageCarasouel";
 
 const Home = () => {
   const images = [
