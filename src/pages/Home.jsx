@@ -8,7 +8,7 @@ import Navbar from "../components/Navbar"
 
 
 import Tabs from "../components/tab";
-import VirtualLabs from "../components/VirtualLabs";
+import VirtualLabs from "../components/virtualLabs";
 import ImageCarousel from "../components/imageCarasouel";
 
 const Home = () => {
