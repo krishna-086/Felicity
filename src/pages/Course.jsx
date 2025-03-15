@@ -96,7 +96,7 @@ const Course = () => {
           </div>
 
           {/* Main Content */}
-          <div className="w-[100] md:w-7/8 p-8 bg-white md:shadow-lg md:rounded-xl ">
+          <div className="w-full md:w-7/8 p-8 bg-white md:shadow-lg md:rounded-xl flex-1">
             {selected === "Objective" && (
               <p className="text-gray-700 leading-relaxed text-lg">
                 The Virtual Lab for Data Structures will focus on creating an
