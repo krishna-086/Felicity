@@ -22,46 +22,36 @@ const headingItemClass = (itemValue, selected) =>
   }`;
 const BubbleSortExercise = () => {
   const initialArray = [64, 38, 89, 46, 99, 96];
+  const [moreOpen, setMoreOpen] = useState(false);
+  const [selected, setSelected] = useState("Aim");
   const [array, setArray] = useState([...initialArray]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [passIndex, setPassIndex] = useState(0);
   const [userMoves, setUserMoves] = useState([]);
-  const [iterations, setIterations] = useState(0);
-  const [selected, setSelected] = useState("Aim");
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [moreOpen, setMoreOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [feedback, setFeedback] = useState(null);
+  const [correctMoves, setCorrectMoves] = useState([]);
+  
 
   const handleNext = () => {
-    if (iterations < array.length) {
-      setIterations(iterations + 1);
-      setCurrentIndex(currentIndex + 1);
-      if (currentIndex >= array.length - 2) {
-        setCurrentIndex(0);
-        setPassIndex(passIndex + 1);
-      }
+    if (currentIndex < array.length - 2) {
+        setCurrentIndex(currentIndex + 1);
+    } else {
+        setCurrentIndex(0); // Reset to start correctly
     }
-  };
-
+};
   const handleSwap = () => {
+    if (currentIndex >= array.length - 1) return; // Prevent swapping last element with nothing
+  
     let arr = [...array];
-    let move = { index: currentIndex, swapped: false };
-
-    if (arr[currentIndex] > arr[currentIndex + 1]) {
-      [arr[currentIndex], arr[currentIndex + 1]] = [
-        arr[currentIndex + 1],
-        arr[currentIndex],
-      ];
-      move.swapped = true;
-    }
-
-    setUserMoves([...userMoves, move]);
+  
+    // Swap elements (no condition, swap whenever user clicks)
+    [arr[currentIndex], arr[currentIndex + 1]] = [
+      arr[currentIndex + 1],
+      arr[currentIndex],
+    ];
+  
     setArray(arr);
-    setCurrentIndex(currentIndex + 1);
-
-    if (currentIndex >= array.length - 2) {
-      setCurrentIndex(0);
-      setPassIndex(passIndex + 1);
-    }
   };
 
   const undoMove = () => {
@@ -87,11 +77,35 @@ const BubbleSortExercise = () => {
     setUserMoves([]);
     setCurrentIndex(0);
     setPassIndex(0);
-    setIterations(0);
+    setIsSubmitted(false);
+    setFeedback(null);
+    setCorrectMoves([]);
   };
 
-  const submitExercise = () => {
-    console.log("Submitted!");
+  const handleSubmit = () => {
+    const sortedArray = [...initialArray].sort((a, b) => a - b);
+    const isCorrect = JSON.stringify(array) === JSON.stringify(sortedArray);
+
+    // Track correct swaps
+    let correct = [];
+    let tempArr = [...initialArray];
+    for (let i = 0; i < tempArr.length - 1; i++) {
+      for (let j = 0; j < tempArr.length - 1 - i; j++) {
+        if (tempArr[j] > tempArr[j + 1]) {
+          [tempArr[j], tempArr[j + 1]] = [tempArr[j + 1], tempArr[j]];
+          correct.push(j);
+        }
+      }
+    }
+
+    setIsSubmitted(true);
+    setCorrectMoves(correct);
+    setFeedback({
+      message: isCorrect
+        ? "Congratulations! Array sorted correctly."
+        : "Incorrect! Some swaps were wrong.",
+      type: isCorrect ? "success" : "error",
+    });
   };
 
   return (
@@ -106,7 +120,6 @@ const BubbleSortExercise = () => {
             <li className="cursor-pointer hover:text-[#085d90]">
               <Link to="/">Home</Link>
             </li>
-
             <li className="cursor-pointer hover:text-[#085d90]">Rate Me</li>
             <li className="cursor-pointer hover:text-[#085d90]">
               Report a Bug
@@ -120,86 +133,91 @@ const BubbleSortExercise = () => {
               </Link>
             </li>
           </ul>
-          {/* Mobile Button */}
-          <div className="md:hidden ml-auto">
-            <Link
-              to="/exp/bubble-sort/demopractice"
-              className="border-2 border-[#085d90] text-[#085d90] px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-[#085d90] hover:text-white shadow-lg transform hover:scale-105 animate-pulse"
-            >
-              Practice
-            </Link>
-          </div>
         </div>
       </nav>
 
       {/* Main Content */}
       <div className="min-h-screen bg-white md:bg-gray-100 py-8 px-4 md:p-8 flex flex-col mt-12">
-        <div
-          className="w-full max-w-7xl flex gap-8"
-          style={{ height: "calc(100vh - 4rem)" }}
-        >
+        <div className="w-full max-w-7xl flex gap-8">
           {/* Sidebar */}
-          <Sidebar2 setSelected={setSelected} selected={selected} />
-        <div className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 w-full max-w-3xl text-center">
-          <h1 className="text-2xl sm:text-3xl font-bold text-blue-800 mb-20">
-            Bubble Sort Exercise
-          </h1>
+          <Sidebar2 />
 
-          {/* Bars Container - Fixed Bottom Alignment */}
-          <div className="flex justify-center items-end gap-2 mb-6 h-64">
-            {array.map((num, index) => (
-              <motion.div
-                key={index}
-                layout
-                className={`w-10 sm:w-12 text-center text-white font-bold p-2 rounded-md transition-all duration-300 ${
-                  index === currentIndex || index === currentIndex + 1
-                    ? "bg-yellow-500"
-                    : "bg-blue-700"
-                }`}
-                style={{ height: `${num * 3}px` }} // Adjusted scaling for responsiveness
+          {/* Sorting Exercise */}
+          <div className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 w-full max-w-3xl text-center">
+            <h1 className="text-2xl sm:text-3xl font-bold text-blue-800 mb-6">
+              Bubble Sort Exercise
+            </h1>
+
+            {/* Bars Container */}
+            <div className="flex justify-center items-end gap-2 mb-6 h-64">
+              {array.map((num, index) => (
+                <motion.div
+                  key={index}
+                  layout
+                  className={`w-10 sm:w-12 text-center text-white font-bold p-2 rounded-md transition-all duration-300 ${
+                    isSubmitted
+                      ? correctMoves.includes(index)
+                        ? "bg-green-500"
+                        : "bg-red-500"
+                      : index === currentIndex || index === currentIndex + 1
+                      ? "bg-yellow-500"
+                      : "bg-blue-700"
+                  }`}
+                  style={{ height: `${num * 3}px` }}
+                >
+                  {num}
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Buttons */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
+              <button
+                onClick={handleNext}
+                className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold shadow-md flex items-center gap-2 justify-center"
               >
-                {num}
-              </motion.div>
-            ))}
-          </div>
+                <MdOutlineDone /> Next
+              </button>
+              <button
+                onClick={handleSwap}
+                className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold shadow-md flex items-center gap-2 justify-center"
+              >
+                <MdOutlineSwapHoriz /> Swap
+              </button>
+              <button
+                onClick={undoMove}
+                className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-semibold shadow-md flex items-center gap-2 justify-center"
+              >
+                <AiOutlineUndo /> Undo
+              </button>
+              <button
+                onClick={resetExercise}
+                className="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg font-semibold shadow-md flex items-center gap-2 justify-center"
+              >
+                <AiOutlineReload /> Reset
+              </button>
+            </div>
 
-          {/* Buttons */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
+            {/* Submit Button */}
             <button
-              onClick={handleNext}
-              className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold shadow-md flex items-center gap-2 justify-center"
+              onClick={handleSubmit}
+              className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold shadow-md w-full sm:w-auto"
             >
-              <MdOutlineDone /> Next
+              Submit
             </button>
-            <button
-              onClick={handleSwap}
-              className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold shadow-md flex items-center gap-2 justify-center"
-            >
-              <MdOutlineSwapHoriz /> Swap
-            </button>
-            <button
-              onClick={undoMove}
-              className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-semibold shadow-md flex items-center gap-2 justify-center"
-            >
-              <AiOutlineUndo /> Undo
-            </button>
-            <button
-              onClick={resetExercise}
-              className="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg font-semibold shadow-md flex items-center gap-2 justify-center"
-            >
-              <AiOutlineReload /> Reset
-            </button>
-          </div>
 
-          {/* Submit Button */}
-          <button
-            onClick={submitExercise}
-            className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold shadow-md w-full sm:w-auto"
-          >
-            Submit
-          </button>
+            {/* Feedback */}
+            {feedback && (
+              <div
+                className={`mt-4 text-lg font-semibold ${
+                  feedback.type === "success" ? "text-green-600" : "text-red-600"
+                }`}
+              >
+                {feedback.message}
+              </div>
+            )}
+          </div>
         </div>
-      </div>
       </div>
       <BottomNavbar
         setSelected={setSelected}
