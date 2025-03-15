@@ -133,6 +133,27 @@ const BubbleSortVisualizer = () => {
           <h1 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
             Bubble Sort Visualizer
           </h1>
+          {/* Instructions */}
+          <div className="mb-6 text-sm sm:text-base text-gray-600 bg-blue-50 p-4 rounded-lg">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3">Instructions</h2>
+            
+              <ul className="list-disc list-inside text-left">
+                <li>
+                Click on the <strong>Start</strong> button to start the
+                demo.
+                </li>
+                <li>
+                Move the slider to adjust the speed of the demo.
+                </li>
+                <li>
+  Click on <strong>Randomize</strong> to generate a new set of numbers.
+</li>
+                <li>
+                  Click on <strong>Reset</strong> button to start all over with a new set of random numbers!
+                </li>
+              </ul>
+            </div>
+          
 
           <div className="flex gap-2 mb-4 items-end h-52 md:h-60 justify-center">
             {array.map((num, index) => (

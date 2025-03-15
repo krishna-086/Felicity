@@ -209,16 +209,26 @@ const BubbleSortPractice = () => {
 
             {/* Instructions */}
             <div className="mb-6 text-sm sm:text-base text-gray-600 bg-blue-50 p-4 rounded-lg">
-              <p>Sort the array using Bubble Sort:</p>
-              <ul className="list-disc list-inside text-left">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3">
+                Instructions
+              </h2>
+              <ul className="list-disc list-inside text-left space-y-2">
                 <li>
-                  Click "Swap" to swap highlighted elements if they are out of
-                  order.
+                  Click <strong>"Swap"</strong> to swap the highlighted elements
+                  if they are out of order.
                 </li>
-                <li>Click "Next" if no swap is needed.</li>
                 <li>
-                  Use "Undo" to revert the last move, "Reset" to start over, and
-                  "Submit" to check your result.
+                  Click <strong>"Next"</strong> if no swap is needed.
+                </li>
+                <li>
+                  Use <strong>"Undo"</strong> to revert the last move.
+                </li>
+                <li>
+                  Click <strong>"Reset"</strong> to start over
+                </li>
+                <li>
+                  {" "}
+                  <strong>"Submit"</strong> to check your result.
                 </li>
               </ul>
             </div>
