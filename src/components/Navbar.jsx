@@ -50,6 +50,7 @@ const Navbar = () => {
         target.scrollIntoView({ behavior: "smooth" });
       }
     }
+    setIsOpen(false);
   };
 
   return (
