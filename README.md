@@ -9,7 +9,7 @@ A complete UI/UX overhaul of the Virtual Labs platform, developed during the Fel
 - **Simplified Navigation**: A dedicated tab bar offers quick access to broad domains via interactive cards, while dropdown menus group similar labs, minimizing scrolling and enabling users to easily locate experiments. Fixed call-to-action buttons like "Practice" provide one-click access for a seamless experience.
 - **VirtuBot - Virtual Assistant**: A built-in virtual assistant that provides instant answers to FAQs, navigational guidance, and context-based prompt suggestions using a curated FAQ dataset.
   
-## Challenge Statement
+## Problem Statement
 
 The goal was to redesign the Virtual Labs platform, serving 17M+ users, focusing on improving accessibility, usability, and overall user experience.
 
@@ -47,7 +47,7 @@ You can access a live demo of the project here:
 - [Ashna Manowar](https://github.com/ashnamanowar) 
 - [Mohak Singhal](https://github.com/Mohak-Singhal) 
 - [Shubham Panda](https://github.com/pandasuvm) 
-- [Saksham Khetan]
+- Saksham Khetan
 
 ## Acknowledgments
 
